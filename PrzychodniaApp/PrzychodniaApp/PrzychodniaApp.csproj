@@ -76,6 +76,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataBaseStuff\Models\Entity.cs" />
+    <Compile Include="DataBaseStuff\Models\Patient.cs" />
+    <Compile Include="Enums\EmailContact.cs" />
+    <Compile Include="Enums\Pronouns.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
