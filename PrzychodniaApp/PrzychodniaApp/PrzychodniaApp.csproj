@@ -80,6 +80,7 @@
     <Compile Include="DataBaseStuff\Models\PrescribedMedications.cs" />
     <Compile Include="DataBaseStuff\Models\Treatment.cs" />
     <Compile Include="DataBaseStuff\Models\TreatmentHistory.cs" />
+    <Compile Include="DataBaseStuff\Models\Vaccination.cs" />
     <Compile Include="Enums\EmailContact.cs" />
     <Compile Include="Enums\Pronouns.cs" />
     <Compile Include="MainWindow.xaml.cs">
