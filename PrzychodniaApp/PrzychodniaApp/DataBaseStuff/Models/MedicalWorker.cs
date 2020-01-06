@@ -1,5 +1,4 @@
-﻿using PrzychodniaApp.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,22 +8,10 @@ using System.Threading.Tasks;
 namespace PrzychodniaApp.DataBaseStuff.Models
 {
     /// <summary>
-    /// Database model describing patient.
+    /// Database model describing prescribed medications.
     /// </summary>
-    public class Patient : Entity
+    public abstract class MedicalWorker : Entity
     {
-        /// <summary>
-        /// Describes if patient is male or female.
-        /// </summary>
-        [Required]
-        public Pronouns PatientsPronounce { get; set; }
-
-        /// <summary>
-        /// Describes how much email contact is allowed by patient.
-        /// </summary>
-        [Required]
-        public EmailContact EmailContact { get; set; }
-
         /// <summary>
         /// Patient's first name
         /// </summary>
@@ -40,16 +27,11 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         public string LastName { get; set; }
 
         /// <summary>
-        /// Date of birth of the patient
+        /// Collection of specializations that this worker has
         /// </summary>
         [Required]
-        public DateTime DateOfBirth { get; set; }
+        public ICollection<Specialization> Specializations { get; set; }
 
-        /// <summary>
-        /// Allows access to patient's treatment history
-        /// </summary>
-        public TreatmentHistory TreatmentHistory { get; set; }
 
-        
     }
 }

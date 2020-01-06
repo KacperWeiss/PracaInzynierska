@@ -75,9 +75,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataBaseStuff\Models\MedicalWorker.cs" />
     <Compile Include="DataBaseStuff\Models\Entity.cs" />
     <Compile Include="DataBaseStuff\Models\Patient.cs" />
     <Compile Include="DataBaseStuff\Models\PrescribedMedications.cs" />
+    <Compile Include="DataBaseStuff\Models\Specialization.cs" />
     <Compile Include="DataBaseStuff\Models\Treatment.cs" />
     <Compile Include="DataBaseStuff\Models\TreatmentHistory.cs" />
     <Compile Include="DataBaseStuff\Models\Vaccination.cs" />
