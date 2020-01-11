@@ -44,6 +44,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Itenso.TimePeriod, Version=2.1.1.0, Culture=neutral, PublicKeyToken=8cb6db75b4e81486, processorArchitecture=MSIL">
+      <HintPath>..\packages\TimePeriodLibrary.NET.2.1.1\lib\net46\Itenso.TimePeriod.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -79,10 +82,13 @@
     <Compile Include="DataBaseStuff\Models\Entity.cs" />
     <Compile Include="DataBaseStuff\Models\Patient.cs" />
     <Compile Include="DataBaseStuff\Models\PrescribedMedications.cs" />
+    <Compile Include="DataBaseStuff\Models\Availability.cs" />
+    <Compile Include="DataBaseStuff\Models\Schedule.cs" />
     <Compile Include="DataBaseStuff\Models\Specialization.cs" />
     <Compile Include="DataBaseStuff\Models\Treatment.cs" />
     <Compile Include="DataBaseStuff\Models\TreatmentHistory.cs" />
     <Compile Include="DataBaseStuff\Models\Vaccination.cs" />
+    <Compile Include="DataBaseStuff\Models\Visits.cs" />
     <Compile Include="Enums\EmailContact.cs" />
     <Compile Include="Enums\Pronouns.cs" />
     <Compile Include="Enums\VaccineStatus.cs" />
