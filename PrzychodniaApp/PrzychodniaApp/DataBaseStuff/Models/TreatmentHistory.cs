@@ -26,11 +26,11 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// <summary>
         /// Lists vaccinations that patient underwent in the past.
         /// </summary>
-        public ICollection<Vaccination> PastVaccinations { get; set; }
+        public virtual ICollection<Vaccination> PastVaccinations { get; set; }
 
         /// <summary>
         /// Lists vaccinations that are obligatory for the patient in the future.
         /// </summary>
-        public ICollection<Vaccination> RequiredVaccinations { get; set; }
+        public virtual ICollection<Vaccination> RequiredVaccinations { get; set; }
     }
 }

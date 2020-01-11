@@ -10,7 +10,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
     /// <summary>
     /// Database model describing prescribed medications.
     /// </summary>
-    public abstract class MedicalWorker : Entity
+    public class MedicalWorker : Entity
     {
         /// <summary>
         /// Patient's first name
@@ -30,8 +30,12 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// Collection of specializations that this worker has
         /// </summary>
         [Required]
-        public ICollection<Specialization> Specializations { get; set; }
+        public virtual ICollection<Specialization> Specializations { get; set; }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        [Required]
+        public virtual ICollection<Availability> Availabilities { get; set; }  
     }
 }

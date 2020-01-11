@@ -15,6 +15,6 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// <summary>
         /// Easy access to all medical workers with proper specialization
         /// </summary>
-        public ICollection<MedicalWorker> MedicalWorkers { get; set; }
+        public virtual ICollection<MedicalWorker> MedicalWorkers { get; set; }
     }
 }

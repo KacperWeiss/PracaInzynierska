@@ -34,6 +34,6 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// <summary>
         /// List of all medications prescribed to the patient
         /// </summary>
-        public ICollection<PrescribedMedications> Prescription { get; set; }
+        public virtual ICollection<PrescribedMedications> Prescription { get; set; }
     }
 }
