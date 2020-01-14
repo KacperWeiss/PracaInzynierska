@@ -10,7 +10,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
     /// <summary>
     /// Database model describing patient's treatment history.
     /// </summary>
-    public class TreatmentHistory : Entity
+    public class DbTreatmentHistory : DbEntity
     {
         /// <summary>
         /// Provides information about last time patient had visited.
@@ -21,16 +21,16 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// <summary>
         /// Lists treatments and illnesses that patient underwent in the past.
         /// </summary>
-        public ICollection<Treatment> Treatments { get; set; }
+        public ICollection<DbTreatment> Treatments { get; set; }
 
         /// <summary>
         /// Lists vaccinations that patient underwent in the past.
         /// </summary>
-        public virtual ICollection<Vaccination> PastVaccinations { get; set; }
+        public virtual ICollection<DbVaccination> PastVaccinations { get; set; }
 
         /// <summary>
         /// Lists vaccinations that are obligatory for the patient in the future.
         /// </summary>
-        public virtual ICollection<Vaccination> RequiredVaccinations { get; set; }
+        public virtual ICollection<DbVaccination> RequiredVaccinations { get; set; }
     }
 }

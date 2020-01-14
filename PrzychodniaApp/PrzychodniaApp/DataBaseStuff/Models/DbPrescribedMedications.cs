@@ -10,7 +10,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
     /// <summary>
     /// Database model describing prescribed medications.
     /// </summary>
-    public class PrescribedMedications : Entity
+    public class DbPrescribedMedications : DbEntity
     {
         /// <summary>
         /// Name of the medicine

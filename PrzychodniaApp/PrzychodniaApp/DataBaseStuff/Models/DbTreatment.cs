@@ -10,7 +10,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
     /// <summary>
     /// Database model describing treatment provided to the patient.
     /// </summary>
-    public class Treatment : Entity
+    public class DbTreatment : DbEntity
     {
         /// <summary>
         /// Illness' name
@@ -34,6 +34,6 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// <summary>
         /// List of all medications prescribed to the patient
         /// </summary>
-        public virtual ICollection<PrescribedMedications> Prescription { get; set; }
+        public virtual ICollection<DbPrescribedMedications> Prescription { get; set; }
     }
 }

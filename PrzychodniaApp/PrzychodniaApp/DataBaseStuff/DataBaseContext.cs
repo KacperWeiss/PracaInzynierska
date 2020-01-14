@@ -21,7 +21,7 @@ namespace PrzychodniaApp.DataBaseStuff
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public virtual DbSet<Patient> Patients { get; set; }
-        public virtual DbSet<MedicalWorker> MedicalWorkers
+        public virtual DbSet<DbPatient> Patients { get; set; }
+        public virtual DbSet<DbMedicalWorker> MedicalWorkers { get; set; }
     }
 }

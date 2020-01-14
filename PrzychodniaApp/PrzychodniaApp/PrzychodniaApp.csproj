@@ -78,17 +78,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataBaseStuff\Models\MedicalWorker.cs" />
-    <Compile Include="DataBaseStuff\Models\Entity.cs" />
-    <Compile Include="DataBaseStuff\Models\Patient.cs" />
-    <Compile Include="DataBaseStuff\Models\PrescribedMedications.cs" />
-    <Compile Include="DataBaseStuff\Models\Availability.cs" />
-    <Compile Include="DataBaseStuff\Models\Schedule.cs" />
-    <Compile Include="DataBaseStuff\Models\Specialization.cs" />
-    <Compile Include="DataBaseStuff\Models\Treatment.cs" />
-    <Compile Include="DataBaseStuff\Models\TreatmentHistory.cs" />
-    <Compile Include="DataBaseStuff\Models\Vaccination.cs" />
-    <Compile Include="DataBaseStuff\Models\Visits.cs" />
+    <Compile Include="DataBaseStuff\Models\DbMedicalWorker.cs" />
+    <Compile Include="DataBaseStuff\Models\DbEntity.cs" />
+    <Compile Include="DataBaseStuff\Models\DbPatient.cs" />
+    <Compile Include="DataBaseStuff\Models\DbPrescribedMedications.cs" />
+    <Compile Include="DataBaseStuff\Models\DbAvailability.cs" />
+    <Compile Include="DataBaseStuff\Models\DbSpecialization.cs" />
+    <Compile Include="DataBaseStuff\Models\DbTreatment.cs" />
+    <Compile Include="DataBaseStuff\Models\DbTreatmentHistory.cs" />
+    <Compile Include="DataBaseStuff\Models\DbVaccination.cs" />
+    <Compile Include="DataBaseStuff\Models\DbVisit.cs" />
     <Compile Include="Enums\EmailContact.cs" />
     <Compile Include="Enums\Pronouns.cs" />
     <Compile Include="Enums\VaccineStatus.cs" />

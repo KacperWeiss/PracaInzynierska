@@ -11,7 +11,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
     /// <summary>
     /// Database model describing each vaccination that was given to the patient.
     /// </summary>
-    public class Vaccination : Entity
+    public class DbVaccination : DbEntity
     {
         /// <summary>
         /// Name of the vaccine

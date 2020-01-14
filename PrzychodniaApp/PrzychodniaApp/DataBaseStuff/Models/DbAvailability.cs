@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PrzychodniaApp.DataBaseStuff.Models
 {
-    public class Availability : Entity
+    public class DbAvailability : DbEntity
     {
         [Required]
-        public Specialization Specialization { get; set; }
+        public DayOfWeek Day { get; set; }
 
         [Required]
         public DateTime TimeStart { get; set; }
@@ -19,12 +19,12 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         public int MaxAmountOfVisits { get; set; }
 
         [Required]
-        public virtual MedicalWorker MedicalWorker { get; set; }
+        public double? VisitPrice { get; set; }
 
         [Required]
-        public virtual Schedule Schedule { get; set; }
+        public virtual DbSpecialization Specialization { get; set; }
 
-        
-        public virtual ICollection<Visits> ScheduledVisits { get; set; }
+        [Required]
+        public virtual DbMedicalWorker MedicalWorker { get; set; }
     }
 }

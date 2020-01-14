@@ -6,7 +6,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
     /// <summary>
     /// Model for entity
     /// </summary>
-    public abstract class Entity
+    public abstract class DbEntity
     {
         /// <summary>
         /// Entity's ID
