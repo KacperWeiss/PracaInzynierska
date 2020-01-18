@@ -34,5 +34,96 @@
             </StackPanel>
         </Grid>
         
+        <Grid x:Name="ContentGrid" Margin="60 40 0 5"/>
+
+        <Grid x:Name="MenuGrid" HorizontalAlignment="Left" Width="250" Background="#F2353535">
+            
+            <materialDesign:TransitioningContent x:Name="transitioningContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
+                <Grid x:Name="menuPointer" Width="10" HorizontalAlignment="Left" Background="{DynamicResource PrimaryHueMidBrush}" Height="60" VerticalAlignment="Top" Margin="0 112 0 0"/>
+            </materialDesign:TransitioningContent>
+            
+            <StackPanel VerticalAlignment="Top">
+                
+                <Button x:Name="MenuButton" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Margin="0 2 0 0" Width="250" Height="50" Click="MenuButton_Click" MouseEnter="MenuButton_MouseEnter" MouseLeave="MenuButton_MouseLeave">
+                    <Grid x:Name="MenuButtonColor" Width="250" Height="50" Background="{x:Null}">
+                        <StackPanel Orientation="Horizontal" Margin="15 0 0 0">
+                            <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="LightGray" VerticalAlignment="Center"/>
+                            <TextBlock Text="Menu" VerticalAlignment="Center" FontSize="20" Margin="20 0" Foreground="LightGray"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+
+                <ListView x:Name="AdministratorListViewMenu" Margin="10 60 0 0" Visibility="Collapsed" Foreground="LightGray" SelectionChanged="AdministratorListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="User" Width="30" Height="30"/>
+                            <TextBlock Text="Zarządzaj kontami" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BorderColor" Width="30" Height="30"/>
+                            <TextBlock Text="Edytuj wizyty" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
+                            <TextBlock Text="Dodaj usługi" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Power" Width="30" Height="30"/>
+                            <TextBlock Text="Wyloguj" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+                <ListView x:Name="ReceptionListViewMenu" Margin="10 60 0 0" Visibility="Collapsed" Foreground="LightGray" SelectionChanged="ReceptionListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
+                            <TextBlock Text="Dodaj nową wizytę" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileDocumentOutline" Width="30" Height="30"/>
+                            <TextBlock Text="Harmonogram" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Power" Width="30" Height="30"/>
+                            <TextBlock Text="Wyloguj" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+                <ListView x:Name="MedicalWorkerListViewMenu" Margin="10 60 0 0" Visibility="Visible" Foreground="LightGray" SelectionChanged="MedicalWorkerListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FormatListNumbered" Width="30" Height="30"/>
+                            <TextBlock Text="Lista wizyt" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Receipt" Width="30" Height="30"/>
+                            <TextBlock Text="Obecna wizyta" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Power" Width="30" Height="30"/>
+                            <TextBlock Text="Wyloguj" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="MiddleScreenPopupGrid" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>

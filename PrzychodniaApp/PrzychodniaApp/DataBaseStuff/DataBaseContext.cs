@@ -30,5 +30,7 @@ namespace PrzychodniaApp.DataBaseStuff
         public virtual DbSet<DbTreatmentHistory> TreatmentHistories { get; set; }
         public virtual DbSet<DbVaccination> Vaccinations { get; set; }
         public virtual DbSet<DbVisit> Visits { get; set; }
+
+        public virtual DbSet<DbUser> Users { get; set; }
     }
 }

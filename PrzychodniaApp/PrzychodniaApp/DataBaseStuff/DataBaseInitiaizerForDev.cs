@@ -14,6 +14,31 @@ namespace PrzychodniaApp.DataBaseStuff
         {
             try
             {
+                var Users = new List<DbUser>()
+                {
+                    new DbUser()
+                    {
+                        Login = "Admin",
+                        Password = "Admin",
+                        UserAccess = UserAccess.Admin
+                    },
+                    new DbUser()
+                    {
+                        Login = "Recepcja",
+                        Password = "Recepcja",
+                        UserAccess = UserAccess.Reception
+                    },
+                    new DbUser()
+                    {
+                        Login = "PracownikMedyczny",
+                        Password = "PracownikMedyczny",
+                        UserAccess = UserAccess.MedicalWorker
+                    }
+
+                };
+                Users.ForEach(u => context.Users.AddOrUpdate(x => x.Id, u));
+                context.SaveChanges();
+
                 var Specializations = new List<DbSpecialization>()
                 {
                     new DbSpecialization()
@@ -47,7 +72,7 @@ namespace PrzychodniaApp.DataBaseStuff
                         MedicalWorkers = new List<DbMedicalWorker>()
                     }
                 };
-                Specializations.ForEach(specialization => context.Specializations.AddOrUpdate(Spec => Spec.Type, specialization));
+                Specializations.ForEach(s => context.Specializations.AddOrUpdate(x => x.Type, s));
                 context.SaveChanges();
 
                 var MedicalWorkers = new List<DbMedicalWorker>()
