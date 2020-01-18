@@ -78,6 +78,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataBaseStuff\RelationshipManagers\DataBaseRelationshipManagerMedicalWorkerToAvailability.cs" />
+    <Compile Include="DataBaseStuff\RelationshipManagers\DataBaseRelationshipManagerSpecializationToAvailability.cs" />
+    <Compile Include="DataBaseStuff\RelationshipManagers\DataBaseRelationshipManagerMedicalWorkerToSpecialization.cs" />
     <Compile Include="DataBaseStuff\Models\DbMedicalWorker.cs" />
     <Compile Include="DataBaseStuff\Models\DbEntity.cs" />
     <Compile Include="DataBaseStuff\Models\DbPatient.cs" />
@@ -88,9 +91,13 @@
     <Compile Include="DataBaseStuff\Models\DbTreatmentHistory.cs" />
     <Compile Include="DataBaseStuff\Models\DbVaccination.cs" />
     <Compile Include="DataBaseStuff\Models\DbVisit.cs" />
+    <Compile Include="DataBaseStuff\RelationshipManagers\DataBaseRelationshipManagerTreatmentHistory.cs" />
+    <Compile Include="DataBaseStuff\RelationshipManagers\DataBaseRelationshipManagerTreatmentToPrescribedMedications.cs" />
+    <Compile Include="DataBaseStuff\RelationshipManagers\DatabaseRelationshipManagerVisit.cs" />
     <Compile Include="Enums\EmailContact.cs" />
     <Compile Include="Enums\Pronouns.cs" />
     <Compile Include="Enums\VaccineStatus.cs" />
+    <Compile Include="Exceptions\UnequalCollectionsException.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -35,7 +35,6 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// <summary>
         /// 
         /// </summary>
-        [Required]
         public virtual ICollection<DbAvailability> Availabilities { get; set; }  
 
         public virtual ICollection<DbVisit> Visits { get; set; }

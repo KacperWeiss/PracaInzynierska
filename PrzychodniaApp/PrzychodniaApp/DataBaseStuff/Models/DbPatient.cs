@@ -39,6 +39,8 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         [RegularExpression("^[A-Z][a-z]{2,}$", ErrorMessage = "Name starts with upper case and all other letters must be lower case, also there are allowed only latin letters.")]
         public string LastName { get; set; }
 
+        public string EmailAdress { get; set; }
+
         /// <summary>
         /// Date of birth of the patient
         /// </summary>
@@ -50,6 +52,6 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// </summary>
         public DbTreatmentHistory TreatmentHistory { get; set; }
 
-        
+        public ICollection<DbVisit> Visits { get; set; }
     }
 }

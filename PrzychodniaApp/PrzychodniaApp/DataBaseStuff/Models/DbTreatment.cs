@@ -29,7 +29,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// Time of the visit
         /// </summary>
         [Required]
-        public DateTime VisitDate { get; set; }
+        public DbVisit Visit { get; set; }
 
         /// <summary>
         /// List of all medications prescribed to the patient

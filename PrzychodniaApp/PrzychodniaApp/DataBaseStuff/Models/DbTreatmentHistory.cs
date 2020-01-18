@@ -16,7 +16,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         /// Provides information about last time patient had visited.
         /// </summary>
         [Required]
-        public DateTime LastVisit { get; set; }
+        public DbVisit LastVisit { get; set; }
 
         /// <summary>
         /// Lists treatments and illnesses that patient underwent in the past.
