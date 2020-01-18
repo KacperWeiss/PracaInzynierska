@@ -18,7 +18,6 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         [Required]
         public int MaxAmountOfVisits { get; set; }
 
-        [Required]
         public double? VisitPrice { get; set; }
 
         [Required]

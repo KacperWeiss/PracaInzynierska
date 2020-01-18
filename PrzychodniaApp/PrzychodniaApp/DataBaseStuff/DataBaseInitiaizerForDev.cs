@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace PrzychodniaApp.DataBaseStuff
 {
@@ -112,8 +113,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         TimeEnd = new DateTime(2020, 01, 20, 15, 30, 0),
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
-                        MedicalWorker = new DbMedicalWorker(),
-                        Specialization = new DbSpecialization()
+                        MedicalWorker = MedicalWorkers[0],
+                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
                     },
                     new DbAvailability()
                     {
@@ -122,8 +123,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         TimeEnd = new DateTime(2020, 01, 22, 15, 30, 0),
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
-                        MedicalWorker = new DbMedicalWorker(),
-                        Specialization = new DbSpecialization()
+                        MedicalWorker = MedicalWorkers[0],
+                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
                     },
                     new DbAvailability()
                     {
@@ -132,8 +133,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         TimeEnd = new DateTime(2020, 01, 24, 15, 30, 0),
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
-                        MedicalWorker = new DbMedicalWorker(),
-                        Specialization = new DbSpecialization()
+                        MedicalWorker = MedicalWorkers[0],
+                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
                     },
                     new DbAvailability()
                     {
@@ -142,8 +143,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         TimeEnd = new DateTime(2020, 01, 21, 15, 30, 0),
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
-                        MedicalWorker = new DbMedicalWorker(),
-                        Specialization = new DbSpecialization()
+                        MedicalWorker = MedicalWorkers[1],
+                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
                     },
                     new DbAvailability()
                     {
@@ -152,8 +153,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         TimeEnd = new DateTime(2020, 01, 23, 15, 30, 0),
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
-                        MedicalWorker = new DbMedicalWorker(),
-                        Specialization = new DbSpecialization()
+                        MedicalWorker = MedicalWorkers[1],
+                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
                     },
                     new DbAvailability()
                     {
@@ -162,8 +163,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         TimeEnd = new DateTime(2020, 01, 22, 15, 30, 0),
                         MaxAmountOfVisits = 14,
                         VisitPrice = 25,
-                        MedicalWorker = new DbMedicalWorker(),
-                        Specialization = new DbSpecialization()
+                        MedicalWorker = MedicalWorkers[0],
+                        Specialization = Specializations.Single(x => x.Type == "Psychiatrist")
                     },
                     new DbAvailability()
                     {
@@ -172,8 +173,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         TimeEnd = new DateTime(2020, 01, 22, 15, 30, 0),
                         MaxAmountOfVisits = 14,
                         VisitPrice = 50,
-                        MedicalWorker = new DbMedicalWorker(),
-                        Specialization = new DbSpecialization()
+                        MedicalWorker = MedicalWorkers[1],
+                        Specialization = Specializations.Single(x => x.Type == "Cardiologist")
                     }
                 };
                 Availabilities.ForEach(a => context.Availabilities.AddOrUpdate(x => x.Id, a));
@@ -189,6 +190,24 @@ namespace PrzychodniaApp.DataBaseStuff
                 DataBaseRelationshipManagerMedicalWorkerToAvailability.AddSingleRelationship(context, MedicalWorkers[1], Availabilities[6]);
                 context.SaveChanges();
 
+                var TreatmentHistories = new List<DbTreatmentHistory>()
+                {
+                    new DbTreatmentHistory()
+                    {
+                        Treatments = new List<DbTreatment>(),
+                        PastVaccinations = new List<DbVaccination>(),
+                        RequiredVaccinations = new List<DbVaccination>()
+                    },
+                    new DbTreatmentHistory()
+                    {
+                        Treatments = new List<DbTreatment>(),
+                        PastVaccinations = new List<DbVaccination>(),
+                        RequiredVaccinations = new List<DbVaccination>()
+                    }
+                };
+                TreatmentHistories.ForEach(th => context.TreatmentHistories.AddOrUpdate(x => x.Id, th));
+                context.SaveChanges();
+
                 var Patients = new List<DbPatient>()
                 {
                     new DbPatient()
@@ -198,8 +217,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         FirstName = "Patient1FN",
                         LastName = "Patient1LN",
                         EmailAdress = "testmail_1@testmail.com",
-                        DateOfBirth = new DateTime(2010, 02, 21),
-                        TreatmentHistory = new DbTreatmentHistory(),
+                        DateOfBirth = new DateTime(2010, 2, 21),
+                        TreatmentHistory = TreatmentHistories[0],
                         Visits = new List<DbVisit>()
                     },
                     new DbPatient()
@@ -209,62 +228,65 @@ namespace PrzychodniaApp.DataBaseStuff
                         FirstName = "Patient2FN",
                         LastName = "Patient2LN",
                         EmailAdress = "testmail_2@testmail.com",
-                        DateOfBirth = new DateTime(2008, 12, 11),
-                        TreatmentHistory = new DbTreatmentHistory(),
+                        DateOfBirth = new DateTime(2008, 11, 11),
+                        TreatmentHistory = TreatmentHistories[1],
                         Visits = new List<DbVisit>()
                     }
                 };
                 Patients.ForEach(p => context.Patients.AddOrUpdate(x => x.Id, p));
                 context.SaveChanges();
 
+                DataBaseRelationshipManagerTreatmentHistory.AddSingleRelationship(context, TreatmentHistories[0], Patients[0]);
+                DataBaseRelationshipManagerTreatmentHistory.AddSingleRelationship(context, TreatmentHistories[1], Patients[1]);
+                context.SaveChanges();
+
                 var Visits = new List<DbVisit>()
                 {
                     new DbVisit()
                     {
-                        TimeStart = new DateTime(2020, 02, 12, 12, 00, 00), //Wednesday
+                        TimeStart = new DateTime(2020, 2, 12, 12, 0, 0), //Wednesday
                         OptionalDescription = "Test Visit1",
-                        Specialization = new DbSpecialization(),
-                        MedicalWorker = new DbMedicalWorker(),
-                        Patient = new DbPatient()
+                        Specialization = Specializations[0],
+                        MedicalWorker = MedicalWorkers[0],
+                        Patient = Patients[0]
                     },
                     new DbVisit()
                     {
-                        TimeStart = new DateTime(2020, 02, 13, 12, 00, 00), //Thursday
+                        TimeStart = new DateTime(2020, 2, 13, 12, 0, 0), //Thursday
                         OptionalDescription = "Test Visit2",
-                        Specialization = new DbSpecialization(),
-                        MedicalWorker = new DbMedicalWorker(),
-                        Patient = new DbPatient()
+                        Specialization = Specializations[0],
+                        MedicalWorker = MedicalWorkers[1],
+                        Patient = Patients[1]
                     }
                 };
                 Visits.ForEach(v => context.Visits.AddOrUpdate(x => x.Id, v));
+
+                var PastVisits = new List<DbVisit>()
+                {
+                    new DbVisit()
+                    {
+                        TimeStart = new DateTime(2020, 1, 15, 12, 0, 0), //Wednesday
+                        OptionalDescription = "Test PastVisit1",
+                        Specialization = Specializations[0],
+                        MedicalWorker = MedicalWorkers[0],
+                        Patient = Patients[0]
+                    },
+                    new DbVisit()
+                    {
+                        TimeStart = new DateTime(2020, 1, 16, 12, 0, 0), //Thursday
+                        OptionalDescription = "Test PastVisit2",
+                        Specialization = Specializations[0],
+                        MedicalWorker = MedicalWorkers[1],
+                        Patient = Patients[1]
+                    }
+                };
+                PastVisits.ForEach(pv => context.Visits.AddOrUpdate(x => x.Id, pv));
                 context.SaveChanges();
 
                 DatabaseRelationshipManagerVisit.AddSingleCompleteRelationships(context, Visits[0], MedicalWorkers[0], Patients[0], Specializations[0]);
                 DatabaseRelationshipManagerVisit.AddSingleCompleteRelationships(context, Visits[1], MedicalWorkers[1], Patients[1], Specializations[0]);
-                context.SaveChanges();
-
-                var TreatmentHistories = new List<DbTreatmentHistory>()
-                {
-                    new DbTreatmentHistory()
-                    {
-                        LastVisit = new DbVisit(),
-                        Treatments = new List<DbTreatment>(),
-                        PastVaccinations = new List<DbVaccination>(),
-                        RequiredVaccinations = new List<DbVaccination>()
-                    },
-                    new DbTreatmentHistory()
-                    {
-                        LastVisit = new DbVisit(),
-                        Treatments = new List<DbTreatment>(),
-                        PastVaccinations = new List<DbVaccination>(),
-                        RequiredVaccinations = new List<DbVaccination>()
-                    }
-                };
-                TreatmentHistories.ForEach(th => context.TreatmentHistories.AddOrUpdate(x => x.Id, th));
-                context.SaveChanges();
-
-                DataBaseRelationshipManagerTreatmentHistory.AddSingleRelationship(context, TreatmentHistories[0], Patients[0]);
-                DataBaseRelationshipManagerTreatmentHistory.AddSingleRelationship(context, TreatmentHistories[1], Patients[1]);
+                DatabaseRelationshipManagerVisit.AddSingleCompleteRelationships(context, PastVisits[0], MedicalWorkers[0], Patients[0], Specializations[0]);
+                DatabaseRelationshipManagerVisit.AddSingleCompleteRelationships(context, PastVisits[1], MedicalWorkers[1], Patients[1], Specializations[0]);
                 context.SaveChanges();
 
                 var Treatments = new List<DbTreatment>()
@@ -274,14 +296,14 @@ namespace PrzychodniaApp.DataBaseStuff
                         IllnessName = "Cold",
                         SymptomsDescription = "Patient have symptoms of cold",
                         Prescription = new List<DbPrescribedMedications>(),
-                        Visit = new DbVisit()
+                        Visit = PastVisits[0]
                     },
                     new DbTreatment()
                     {
                         IllnessName = "Cold",
                         SymptomsDescription = "Patient have symptoms of cold",
                         Prescription = new List<DbPrescribedMedications>(),
-                        Visit = new DbVisit()
+                        Visit = PastVisits[1]
                     }
                 };
                 Treatments.ForEach(t => context.Treatments.AddOrUpdate(x => x.Id, t));
@@ -309,34 +331,6 @@ namespace PrzychodniaApp.DataBaseStuff
 
                 DataBaseRelationshipManagerTreatmentToPrescribedMedications.AddSingleRelationship(context, Treatments[0], PrescribedMedications[0]);
                 DataBaseRelationshipManagerTreatmentToPrescribedMedications.AddSingleRelationship(context, Treatments[1], PrescribedMedications[1]);
-                context.SaveChanges();
-
-                var PastVisits = new List<DbVisit>()
-                {
-                    new DbVisit()
-                    {
-                        TimeStart = new DateTime(2020, 01, 15, 12, 00, 00), //Wednesday
-                        OptionalDescription = "Test PastVisit1",
-                        Specialization = new DbSpecialization(),
-                        MedicalWorker = new DbMedicalWorker(),
-                        Patient = new DbPatient()
-                    },
-                    new DbVisit()
-                    {
-                        TimeStart = new DateTime(2020, 01, 16, 12, 00, 00), //Thursday
-                        OptionalDescription = "Test PastVisit2",
-                        Specialization = new DbSpecialization(),
-                        MedicalWorker = new DbMedicalWorker(),
-                        Patient = new DbPatient()
-                    }
-                };
-                PastVisits.ForEach(pv => context.Visits.AddOrUpdate(x => x.Id, pv));
-                context.SaveChanges();
-
-                DatabaseRelationshipManagerVisit.AddSingleCompleteRelationships(context, PastVisits[0], MedicalWorkers[0], Patients[0], Specializations[0]);
-                DatabaseRelationshipManagerVisit.AddSingleCompleteRelationships(context, PastVisits[1], MedicalWorkers[1], Patients[1], Specializations[0]);
-                DatabaseRelationshipManagerVisit.AddSingleRelationship(context, PastVisits[0], TreatmentHistories[0]);
-                DatabaseRelationshipManagerVisit.AddSingleRelationship(context, PastVisits[1], TreatmentHistories[1]);
                 DatabaseRelationshipManagerVisit.AddSingleRelationship(context, PastVisits[0], Treatments[0]);
                 DatabaseRelationshipManagerVisit.AddSingleRelationship(context, PastVisits[1], Treatments[1]);
                 context.SaveChanges();
@@ -347,43 +341,37 @@ namespace PrzychodniaApp.DataBaseStuff
                     {
                         VaccinesName = "Flu",
                         VaccineStatus = VaccineStatus.ObligatoryByDate,
-                        ObligatoryBy = new DateTime(2020, 10, 10),
-                        VaccinationDate = new DateTime()
+                        ObligatoryBy = new DateTime(2020, 10, 10)
                     },
                     new DbVaccination()
                     {
                         VaccinesName = "Illness1",
-                        VaccineStatus = VaccineStatus.Optional,
-                        ObligatoryBy = new DateTime(),
-                        VaccinationDate = new DateTime()
+                        VaccineStatus = VaccineStatus.Optional
                     },
                     new DbVaccination()
                     {
                         VaccinesName = "Illness2",
                         VaccineStatus = VaccineStatus.ObligatoryAlreadyVaccined,
-                        ObligatoryBy = new DateTime(2020, 01 , 10),
-                        VaccinationDate = new DateTime(2020, 01, 05)
+                        ObligatoryBy = new DateTime(2020, 1 , 10),
+                        VaccinationDate = new DateTime(2020, 1, 05)
                     },
                     new DbVaccination()
                     {
                         VaccinesName = "Flu",
                         VaccineStatus = VaccineStatus.ObligatoryByDate,
-                        ObligatoryBy = new DateTime(2020, 10, 10),
-                        VaccinationDate = new DateTime()
+                        ObligatoryBy = new DateTime(2020, 10, 10)
                     },
                     new DbVaccination()
                     {
                         VaccinesName = "Illness1",
-                        VaccineStatus = VaccineStatus.Optional,
-                        ObligatoryBy = new DateTime(),
-                        VaccinationDate = new DateTime()
+                        VaccineStatus = VaccineStatus.Optional
                     },
                     new DbVaccination()
                     {
                         VaccinesName = "Illness2",
                         VaccineStatus = VaccineStatus.ObligatoryAlreadyVaccined,
-                        ObligatoryBy = new DateTime(2020, 01 , 10),
-                        VaccinationDate = new DateTime(2020, 01, 05)
+                        ObligatoryBy = new DateTime(2020, 1 , 10),
+                        VaccinationDate = new DateTime(2020, 1, 05)
                     }
                 };
                 Vaccinations.ForEach(v => context.Vaccinations.AddOrUpdate(x => x.Id, v));
@@ -391,15 +379,14 @@ namespace PrzychodniaApp.DataBaseStuff
 
                 DataBaseRelationshipManagerTreatmentHistory.AddManyRelationshipsToRequiredVaccinations(context, TreatmentHistories[0], Vaccinations.GetRange(0, 3));
                 DataBaseRelationshipManagerTreatmentHistory.AddManyRelationshipsToRequiredVaccinations(context, TreatmentHistories[1], Vaccinations.GetRange(3, 3));
-                DataBaseRelationshipManagerTreatmentHistory.AddSingleRelationshipToPastVaccinations(context, TreatmentHistories[0], Vaccinations[3]);
-                DataBaseRelationshipManagerTreatmentHistory.AddSingleRelationshipToPastVaccinations(context, TreatmentHistories[1], Vaccinations[6]);
+                DataBaseRelationshipManagerTreatmentHistory.AddSingleRelationshipToPastVaccinations(context, TreatmentHistories[0], Vaccinations[2]);
+                DataBaseRelationshipManagerTreatmentHistory.AddSingleRelationshipToPastVaccinations(context, TreatmentHistories[1], Vaccinations[5]);
                 context.SaveChanges();
 
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
     }

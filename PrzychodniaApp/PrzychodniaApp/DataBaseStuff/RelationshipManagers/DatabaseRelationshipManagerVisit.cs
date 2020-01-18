@@ -20,11 +20,6 @@ namespace PrzychodniaApp.DataBaseStuff.RelationshipManagers
             AddSingleRelationship(context, visit, specialization);
         }
 
-        public static void AddSingleRelationship(DataBaseContext context, DbVisit visit, DbTreatmentHistory treatmentHistory)
-        {
-            context.TreatmentHistories.SingleOrDefault(th => th.Id == treatmentHistory.Id).LastVisit = context.Visits.SingleOrDefault(v => v.Id == visit.Id);
-        }
-
         public static void AddSingleRelationship(DataBaseContext context, DbVisit visit, DbTreatment treatment)
         {
             context.Treatments.SingleOrDefault(t => t.Id == treatment.Id).Visit = context.Visits.SingleOrDefault(v => v.Id == visit.Id);

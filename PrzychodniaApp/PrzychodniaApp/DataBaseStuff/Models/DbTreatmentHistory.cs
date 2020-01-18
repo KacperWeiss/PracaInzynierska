@@ -13,12 +13,6 @@ namespace PrzychodniaApp.DataBaseStuff.Models
     public class DbTreatmentHistory : DbEntity
     {
         /// <summary>
-        /// Provides information about last time patient had visited.
-        /// </summary>
-        [Required]
-        public DbVisit LastVisit { get; set; }
-
-        /// <summary>
         /// Lists treatments and illnesses that patient underwent in the past.
         /// </summary>
         public ICollection<DbTreatment> Treatments { get; set; }

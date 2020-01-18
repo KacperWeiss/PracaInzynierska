@@ -13,21 +13,29 @@ namespace PrzychodniaApp.Logics
     {
         static public UserAccess LoginAs(string login, string password)
         {
-            using (var DbContext = new DataBaseContext())
+            try
             {
-                DbUser User = DbContext.Users.SingleOrDefault(u => u.Login == login);
-                if (User == null)
+                using (var DbContext = new DataBaseContext())
                 {
-                    throw new Exception("Wrong login!");
+                    DbUser User = DbContext.Users.SingleOrDefault(u => u.Login == login);
+                    if (User == null)
+                    {
+                        throw new Exception("Wrong login!");
+                    }
+                    if (User.Password == password)
+                    {
+                        return (UserAccess)User.UserAccess;
+                    }
+                    else
+                    {
+                        throw new Exception("Wrong password!");
+                    }
                 }
-                if (User.Password == password)
-                {
-                    return (UserAccess)User.UserAccess;
-                }
-                else
-                {
-                    throw new Exception("Wrong password!");
-                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }
