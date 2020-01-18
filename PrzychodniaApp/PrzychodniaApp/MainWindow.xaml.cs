@@ -24,5 +24,40 @@ namespace PrzychodniaApp
         {
             InitializeComponent();
         }
+
+        private void MainWindowBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == System.Windows.WindowState.Normal)
+            {
+                this.WindowState = System.Windows.WindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = System.Windows.WindowState.Normal;
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }
