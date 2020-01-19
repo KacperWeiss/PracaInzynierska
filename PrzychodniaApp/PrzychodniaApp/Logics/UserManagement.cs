@@ -11,7 +11,7 @@ namespace PrzychodniaApp.Logics
 {
     public static class UserManagement
     {
-        static public UserAccess LoginAs(string login, string password)
+        static public DbUser LoginAs(string login, string password)
         {
             try
             {
@@ -24,7 +24,7 @@ namespace PrzychodniaApp.Logics
                     }
                     if (User.Password == password)
                     {
-                        return (UserAccess)User.UserAccess;
+                        return User;
                     }
                     else
                     {

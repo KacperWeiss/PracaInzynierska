@@ -1,4 +1,5 @@
-﻿using PrzychodniaApp.Enums;
+﻿using PrzychodniaApp.DataBaseStuff.Models;
+using PrzychodniaApp.Enums;
 using PrzychodniaApp.Logics;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace PrzychodniaApp.UserControlers
     /// </summary>
     public partial class LoginForm : UserControl
     {
+        public int userId;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -53,7 +56,9 @@ namespace PrzychodniaApp.UserControlers
                     {
                         try
                         {
-                            UserAccess accountType = UserManagement.LoginAs(LoginTextBox.Text, PasswordTextBox.Password);
+                            DbUser user = UserManagement.LoginAs(LoginTextBox.Text, PasswordTextBox.Password);
+                            UserAccess accountType = (UserAccess)user.UserAccess;
+                            userId = user.Id;
 
                             parentWindow.LogIn(accountType);
                         }

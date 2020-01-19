@@ -15,6 +15,28 @@ namespace PrzychodniaApp.DataBaseStuff
         {
             try
             {
+                var MedicalWorkers = new List<DbMedicalWorker>()
+                {
+                    new DbMedicalWorker()
+                    {
+                        FirstName = "FN1",
+                        LastName = "LN1",
+                        Specializations = new List<DbSpecialization>(),
+                        Availabilities = new List<DbAvailability>(),
+                        Visits = new List<DbVisit>()
+                    },
+                    new DbMedicalWorker()
+                    {
+                        FirstName = "FN2",
+                        LastName = "LN2",
+                        Specializations = new List<DbSpecialization>(),
+                        Availabilities = new List<DbAvailability>(),
+                        Visits = new List<DbVisit>()
+                    }
+                };
+                MedicalWorkers.ForEach(mw => context.MedicalWorkers.AddOrUpdate(x => x.Id, mw));
+                context.SaveChanges();
+
                 var Users = new List<DbUser>()
                 {
                     new DbUser()
@@ -31,9 +53,17 @@ namespace PrzychodniaApp.DataBaseStuff
                     },
                     new DbUser()
                     {
-                        Login = "PracownikMedyczny",
-                        Password = "PracownikMedyczny",
-                        UserAccess = UserAccess.MedicalWorker
+                        Login = "PracownikMedyczny0",
+                        Password = "PracownikMedyczny0",
+                        UserAccess = UserAccess.MedicalWorker,
+                        MedicalWorker = MedicalWorkers[0]
+                    },
+                    new DbUser()
+                    {
+                        Login = "PracownikMedyczny1",
+                        Password = "PracownikMedyczny1",
+                        UserAccess = UserAccess.MedicalWorker,
+                        MedicalWorker = MedicalWorkers[1]
                     }
 
                 };
@@ -74,28 +104,6 @@ namespace PrzychodniaApp.DataBaseStuff
                     }
                 };
                 Specializations.ForEach(s => context.Specializations.AddOrUpdate(x => x.Type, s));
-                context.SaveChanges();
-
-                var MedicalWorkers = new List<DbMedicalWorker>()
-                {
-                    new DbMedicalWorker()
-                    {
-                        FirstName = "FN1",
-                        LastName = "LN1",
-                        Specializations = new List<DbSpecialization>(),
-                        Availabilities = new List<DbAvailability>(),
-                        Visits = new List<DbVisit>()
-                    },
-                    new DbMedicalWorker()
-                    {
-                        FirstName = "FN2",
-                        LastName = "LN2",
-                        Specializations = new List<DbSpecialization>(),
-                        Availabilities = new List<DbAvailability>(),
-                        Visits = new List<DbVisit>()
-                    }
-                };
-                MedicalWorkers.ForEach(mw => context.MedicalWorkers.AddOrUpdate(x => x.Id, mw));
                 context.SaveChanges();
 
                 DataBaseRelationshipManagerMedicalWorkerToSpecialization.AddSingleToManyRelationships(context, MedicalWorkers[0], Specializations.GetRange(0, 3)); 

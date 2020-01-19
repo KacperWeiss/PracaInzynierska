@@ -18,5 +18,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
 
         [Required]
         public UserAccess UserAccess { get; set; }
+
+        public virtual DbMedicalWorker MedicalWorker { get; set; }
     }
 }

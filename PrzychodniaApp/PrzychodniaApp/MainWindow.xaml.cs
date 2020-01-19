@@ -1,5 +1,6 @@
 ﻿using PrzychodniaApp.Enums;
 using PrzychodniaApp.UserControlers;
+using PrzychodniaApp.UserControlers.Tabs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +74,6 @@ namespace PrzychodniaApp
 
         private void MainWindowBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
             try
             {
                 DragMove();
@@ -138,11 +138,11 @@ namespace PrzychodniaApp
 
             switch (index)
             {
-                //case 0:
-                //    var userManagementTab = new UsersManagementTab();
-                //    ContentGrid.Children.Clear();
-                //    ContentGrid.Children.Add(userManagementTab);
-                //    break;
+                case 0:
+                    var userManagementTab = new UsersManagementTab();
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(userManagementTab);
+                    break;
                 //case 1:
                 //    var visitsEditionTab = new VisitsEditionTab();
                 //    ContentGrid.Children.Clear();
