@@ -72,6 +72,11 @@ namespace PrzychodniaApp.UserControlers.Tabs
         {
             try
             {
+                if (AccessLevelChoiceComboBox.SelectedIndex == -1)
+                {
+                    throw new Exception("You need to select access level!");
+                }
+
                 var userId = UserList[UsersListView.SelectedIndex].UserId;
                 UserAccess newUserAccess = UserAccess.Admin;
 
@@ -104,6 +109,7 @@ namespace PrzychodniaApp.UserControlers.Tabs
                         user.UserAccess = newUserAccess;
                         context.SaveChanges();
                     }
+                    UserList = UserForUsersManagementTab.GetRepresentation();
                 }
             }
             catch (Exception ex)
@@ -125,7 +131,9 @@ namespace PrzychodniaApp.UserControlers.Tabs
                         throw new Exception("You can't delete the only user with Admin status!");
                     }
                     context.Users.Remove(user);
+                    context.SaveChanges();
                 }
+                UserList = UserForUsersManagementTab.GetRepresentation();
             }
             catch (Exception ex)
             {
@@ -158,6 +166,14 @@ namespace PrzychodniaApp.UserControlers.Tabs
                 if (LoginTextBox.Text == "" || PasswordTextBox.Text == "")
                 {
                     throw new Exception("Name and surname must be provided!");
+                }
+                if (UserList.Exists(x => x.Username == LoginTextBox.Text))
+                {
+                    throw new Exception("User already exists!");
+                }
+                if (AccessLevelChoiceComboBox.SelectedIndex == -1)
+                {
+                    throw new Exception("You need to select access level!");
                 }
 
                 UserAccess newUserAccess = UserAccess.Admin;
@@ -220,6 +236,7 @@ namespace PrzychodniaApp.UserControlers.Tabs
                             context.SaveChanges();
                         }
                     }
+                    UserList = UserForUsersManagementTab.GetRepresentation();
                 }
             }
             catch (Exception ex)
