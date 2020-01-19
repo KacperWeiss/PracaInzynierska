@@ -153,62 +153,80 @@ namespace PrzychodniaApp.UserControlers.Tabs
 
         private void SaveNewUserButton_Click(object sender, RoutedEventArgs e)
         {
-            UserAccess newUserAccess = UserAccess.Admin;
-
-            var index = AccessLevelChoiceComboBox.SelectedIndex;
-            if (index != -1)
+            try
             {
-                switch (index)
+                if (LoginTextBox.Text == "" || PasswordTextBox.Text == "")
                 {
-                    case 0:
-                        newUserAccess = UserAccess.Admin;
-                        break;
-                    case 1:
-                        newUserAccess = UserAccess.Reception;
-                        break;
-                    case 2:
-                        newUserAccess = UserAccess.MedicalWorker;
-                        break;
-                    default:
-                        break;
+                    throw new Exception("Name and surname must be provided!");
                 }
 
-                using (var context = new DataBaseContext())
-                {
-                    if (newUserAccess == UserAccess.MedicalWorker)
-                    {
-                        var NewMedicalWorker = new DbMedicalWorker()
-                        {
-                            FirstName = FirstNameTextBox.Text,
-                            LastName = LastNameTextBox.Text,
-                            Availabilities = new List<DbAvailability>(),
-                            Specializations = new List<DbSpecialization>(),
-                            Visits = new List<DbVisit>()
-                        };
-                        context.MedicalWorkers.Add(NewMedicalWorker);
-                        context.SaveChanges();
+                UserAccess newUserAccess = UserAccess.Admin;
 
-                        context.Users.Add(new DbUser()
-                        {
-                            Login = LoginTextBox.Text,
-                            Password = PasswordTextBox.Text,
-                            UserAccess = newUserAccess,
-                            MedicalWorker = NewMedicalWorker
-                        });
-                        context.SaveChanges();
-                    }
-                    else
+                var index = AccessLevelChoiceComboBox.SelectedIndex;
+                if (index != -1)
+                {
+                    switch (index)
                     {
-                        context.Users.Add(new DbUser()
+                        case 0:
+                            newUserAccess = UserAccess.Admin;
+                            break;
+                        case 1:
+                            newUserAccess = UserAccess.Reception;
+                            break;
+                        case 2:
+                            newUserAccess = UserAccess.MedicalWorker;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    using (var context = new DataBaseContext())
+                    {
+                        if (newUserAccess == UserAccess.MedicalWorker)
                         {
-                            Login = LoginTextBox.Text,
-                            Password = PasswordTextBox.Text,
-                            UserAccess = newUserAccess
-                        });
-                        context.SaveChanges();
+                            if (FirstNameTextBox.Text == "" || LastNameTextBox.Text == "")
+                            {
+                                throw new Exception("Name and surname must be provided!");
+                            }
+
+                            var NewMedicalWorker = new DbMedicalWorker()
+                            {
+                                FirstName = FirstNameTextBox.Text,
+                                LastName = LastNameTextBox.Text,
+                                Availabilities = new List<DbAvailability>(),
+                                Specializations = new List<DbSpecialization>(),
+                                Visits = new List<DbVisit>()
+                            };
+                            context.MedicalWorkers.Add(NewMedicalWorker);
+                            context.SaveChanges();
+
+                            context.Users.Add(new DbUser()
+                            {
+                                Login = LoginTextBox.Text,
+                                Password = PasswordTextBox.Text,
+                                UserAccess = newUserAccess,
+                                MedicalWorker = NewMedicalWorker
+                            });
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            context.Users.Add(new DbUser()
+                            {
+                                Login = LoginTextBox.Text,
+                                Password = PasswordTextBox.Text,
+                                UserAccess = newUserAccess
+                            });
+                            context.SaveChanges();
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void CopyLoginAndPasswordButton_Click(object sender, RoutedEventArgs e)
