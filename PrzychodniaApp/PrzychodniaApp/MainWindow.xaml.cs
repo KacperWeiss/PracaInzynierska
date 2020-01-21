@@ -144,16 +144,11 @@ namespace PrzychodniaApp
                     ContentGrid.Children.Add(userManagementTab);
                     break;
                 //case 1:
-                //    var visitsEditionTab = new VisitsEditionTab();
-                //    ContentGrid.Children.Clear();
-                //    ContentGrid.Children.Add(visitsEditionTab);
-                //    break;
-                //case 2:
                 //    var addServicesTab = new AddServicesTab();
                 //    ContentGrid.Children.Clear();
                 //    ContentGrid.Children.Add(addServicesTab);
                 //    break;
-                case 3:
+                case 2:
                     ContentGrid.Children.Clear();
                     ShowLoginForm();
                     break;
@@ -170,17 +165,22 @@ namespace PrzychodniaApp
 
             switch (index)
             {
-                //    case 0:
-                //        var newVisitsTab = new NewVisitsTab();
-                //        ContentGrid.Children.Clear();
-                //        ContentGrid.Children.Add(newVisitsTab);
-                //        break;
-                //    case 1:
+                //case 0:
+                //    var registrationTab = new RegistrationTab();
+                //    ContentGrid.Children.Clear();
+                //    ContentGrid.Children.Add(registrationTab);
+                //    break;
+                case 1:
+                    var visitsEditorTab = new VisitsEditorTab();
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(visitsEditorTab);
+                    break;
+                //    case 2:
                 //        var scheduleTab = new ScheduleTab();
                 //        ContentGrid.Children.Clear();
                 //        ContentGrid.Children.Add(scheduleTab);
                 //        break;
-                case 2:
+                case 3:
                     ContentGrid.Children.Clear();
                     ShowLoginForm();
                     break;

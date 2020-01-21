@@ -53,17 +53,11 @@
                     </Grid>
                 </Button>
 
-                <ListView x:Name="AdministratorListViewMenu" Margin="10 60 0 0" Visibility="Collapsed" Foreground="LightGray" SelectionChanged="AdministratorListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="AdministratorListViewMenu" Margin="10 60 0 0" Visibility="Visible" Foreground="LightGray" SelectionChanged="AdministratorListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="User" Width="30" Height="30"/>
                             <TextBlock Text="Zarządzaj kontami" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="BorderColor" Width="30" Height="30"/>
-                            <TextBlock Text="Edytuj wizyty" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
@@ -80,11 +74,17 @@
                     </ListViewItem>
                 </ListView>
 
-                <ListView x:Name="ReceptionListViewMenu" Margin="10 60 0 0" Visibility="Collapsed" Foreground="LightGray" SelectionChanged="ReceptionListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="ReceptionListViewMenu" Margin="10 60 0 0" Visibility="Visible" Foreground="LightGray" SelectionChanged="ReceptionListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
-                            <TextBlock Text="Dodaj nową wizytę" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                            <TextBlock Text="Rejestracja" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BorderColor" Width="30" Height="30"/>
+                            <TextBlock Text="Edytuj wizyty" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
@@ -101,7 +101,7 @@
                     </ListViewItem>
                 </ListView>
 
-                <ListView x:Name="MedicalWorkerListViewMenu" Margin="10 60 0 0" Visibility="Visible" Foreground="LightGray" SelectionChanged="MedicalWorkerListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="MedicalWorkerListViewMenu" Margin="10 60 0 0" Visibility="Collapsed" Foreground="LightGray" SelectionChanged="MedicalWorkerListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FormatListNumbered" Width="30" Height="30"/>

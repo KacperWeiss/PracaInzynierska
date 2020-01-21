@@ -81,11 +81,15 @@
     <Compile Include="Logics\PasswordGenerator.cs" />
     <Compile Include="Logics\UserManagement.cs" />
     <Compile Include="UserControlers\DataRepresantations\UserForUsersManagementTab.cs" />
+    <Compile Include="UserControlers\DataRepresantations\VisitForVisitsEditorTab.cs" />
     <Compile Include="UserControlers\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlers\Tabs\UsersManagementTab.xaml.cs">
       <DependentUpon>UsersManagementTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlers\Tabs\VisitsEditorTab.xaml.cs">
+      <DependentUpon>VisitsEditorTab.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlers\Tabs\UsersManagementTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlers\Tabs\VisitsEditorTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
