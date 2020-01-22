@@ -78,7 +78,7 @@
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
-                            <TextBlock Text="Rejestracja" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
+                            <TextBlock Text="Pacjenci" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">

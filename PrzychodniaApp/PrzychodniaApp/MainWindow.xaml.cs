@@ -165,11 +165,11 @@ namespace PrzychodniaApp
 
             switch (index)
             {
-                //case 0:
-                //    var registrationTab = new RegistrationTab();
-                //    ContentGrid.Children.Clear();
-                //    ContentGrid.Children.Add(registrationTab);
-                //    break;
+                case 0:
+                    var registrationTab = new PatientsTab();
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(registrationTab);
+                    break;
                 case 1:
                     var visitsEditorTab = new VisitsEditorTab();
                     ContentGrid.Children.Clear();
