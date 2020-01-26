@@ -17,7 +17,7 @@ namespace PrzychodniaApp.UserControlers.DataRepresantations
         public EmailContact EmailContact { get; set; }
         public string FullName { get; set; }
         public string EmailAdress { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
         public string LastPrescription { get; set; }
         public string NextVisit { get; set; }
         public string NextVaccination { get; set; }
@@ -40,7 +40,7 @@ namespace PrzychodniaApp.UserControlers.DataRepresantations
                         EmailContact = x.EmailContact,
                         FullName = x.FirstName + " " + x.LastName,
                         EmailAdress = x.EmailAdress,
-                        DateOfBirth = x.DateOfBirth,
+                        DateOfBirth = x.DateOfBirth.ToLongDateString(),
                         LastPrescription = lastPrescription,
                         NextVisit = x.Visits.OrderBy(t => t.TimeStart).SingleOrDefault(t => t.TimeStart > DateTime.Now).TimeStart.ToString(),
                         NextVaccination = x.TreatmentHistory.RequiredVaccinations.OrderBy(t => t.ObligatoryBy).SingleOrDefault(t => t.ObligatoryBy > DateTime.Now).ObligatoryBy.Value.ToShortDateString()

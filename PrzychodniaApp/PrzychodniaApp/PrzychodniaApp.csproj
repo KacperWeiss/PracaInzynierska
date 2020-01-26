@@ -89,6 +89,9 @@
     <Compile Include="UserControlers\Entries\PatientsEntry.xaml.cs">
       <DependentUpon>PatientsEntry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlers\Entries\PatientVaccinationEntry.xaml.cs">
+      <DependentUpon>PatientVaccinationEntry.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlers\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControlers\Entries\PatientsEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlers\Entries\PatientVaccinationEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

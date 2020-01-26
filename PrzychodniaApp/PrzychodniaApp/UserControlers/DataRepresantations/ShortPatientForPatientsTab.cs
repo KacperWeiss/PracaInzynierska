@@ -11,7 +11,7 @@ namespace PrzychodniaApp.UserControlers.DataRepresantations
     public class ShortPatientForPatientsTab
     {
         public int PatientId { get; set; }
-        public Pronouns PatientsGender { get; set; }
+        public string PatientsGender { get; set; }
         public string EmailContact { get; set; }
         public string FullName { get; set; }
         public string EmailAdress { get; set; }
@@ -27,7 +27,7 @@ namespace PrzychodniaApp.UserControlers.DataRepresantations
                     .Select(x => new ShortPatientForPatientsTab()
                     {
                         PatientId = x.Id,
-                        PatientsGender = x.PatientsPronounce,
+                        PatientsGender = x.PatientsPronounce.ToString(),
                         EmailContact = CustomEnumToString.GetEmailContactText(x.EmailContact),
                         FullName = x.FirstName + " " + x.LastName,
                         EmailAdress = x.EmailAdress,

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Entries="clr-namespace:PrzychodniaApp.UserControlers.Entries"
              xmlns:local="clr-namespace:PrzychodniaApp.UserControlers.Tabs"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              TextElement.FontSize="15"
              d:DesignHeight="650" d:DesignWidth="1200">
@@ -16,19 +17,18 @@
         
         <StackPanel Grid.Row="0">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Background="LightGray">
-                <Button Uid="0" Content="Wszyscy pacjenci" Width="300" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="FirstTab_Click"/>
+                <Button Uid="0" Content="Wszyscy pacjenci" Width="350" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="FirstTab_Click"/>
                 <!--<Border BorderBrush="Black" BorderThickness="0 0 1 0" Background="{x:Null}" />-->
-                <Button Uid="1" Content="Nowy Pacjent" Width="200" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="Tab_Click"/>
-                <Button Uid="2" Content="Pacjent" Width="200" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="Tab_Click"/>
-                <Button Uid="3" Content="Szczepienia" Width="200" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="Tab_Click"/>
-                <Button Uid="4" Content="Nadchodzące wizyty" Width="200" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="Tab_Click"/>
+                <Button Uid="1" Content="Nowy Pacjent" Width="250" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="Tab_Click"/>
+                <Button Uid="2" Content="Pacjent" Width="250" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="PatientTab_Click"/>
+                <Button Uid="3" Content="Szczepienia" Width="250" Height="40" FontSize="16" Margin="10 0" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Click="Tab_Click"/>
             </StackPanel>
-            <Grid x:Name="TabPointer" Width="300" Height="5" HorizontalAlignment="Left" Background="{DynamicResource PrimaryHueMidBrush}" Margin="10 0"/>
+            <Grid x:Name="TabPointer" Width="350" Height="5" HorizontalAlignment="Left" Background="{DynamicResource PrimaryHueMidBrush}" Margin="10 0"/>
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" x:Name="ContentScrollViewer" PreviewMouseWheel="ContentScrollViewer_PreviewMouseWheel" Margin="0 0 5 0">
             <Grid HorizontalAlignment="Center">
-                <Grid x:Name="PatientsWithSearchGrid" HorizontalAlignment="Center">
+                <Grid x:Name="PatientsWithSearchGrid" Visibility="Collapsed" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
@@ -51,30 +51,178 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
-                
-                <ListView x:Name="NewPatientView" Visibility="Collapsed">
 
-                </ListView>
+                <Grid x:Name="NewPatientGrid" Visibility="Collapsed">
+                    <StackPanel Width="1170">
+                        <Button Height="200" Width="200" HorizontalAlignment="Center" Background="{x:Null}" Click="FaceButton_Click">
+                            <materialDesign:PackIcon x:Name="FaceIcon" Kind="Face" Height="200" Width="200" HorizontalAlignment="Center" Foreground="Black"/>
+                        </Button>
+                        <Grid Margin="0 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            
+                            <Label Grid.Column="0" Grid.Row="0" Content="Imię: " Margin="0 8"/>
+                            <TextBox x:Name="NameTextBox" Grid.Column="1" Grid.Row="0" Margin="0 0 20 0"/>
+                            <Label Grid.Column="0" Grid.Row="1" Content="Nazwisko: " Margin="0 8"/>
+                            <TextBox x:Name="SurnameTextBox" Grid.Column="1" Grid.Row="1" Margin="0 0 20 0"/>
+                            <Label Grid.Column="0" Grid.Row="2" Content="Email: " Margin="0 8"/>
+                            <TextBox x:Name="EmailTextBox" Grid.Column="1" Grid.Row="2" Margin="0 0 20 0"/>
 
-                <ListView x:Name="PatientView" Visibility="Collapsed" ItemsSource="{Binding ChosenPatient}">
-                    
-                </ListView>
+                            <Label Grid.Column="2" Grid.Row="0" Content="Data urodzenia: " Margin="0 8"/>
+                            <DatePicker x:Name="BirthdayDatePicker" Grid.Column="3" Grid.Row="0" Margin="0 0 20 0"/>
+                            <Label Grid.Column="2" Grid.Row="1" Content="Płeć: " Margin="0 8"/>
+                            <ComboBox x:Name="GenderComboBox" Grid.Column="3" Grid.Row="1" Margin="0 0 20 0" SelectionChanged="GenderComboBox_SelectionChanged">
+                                <ComboBoxItem Content="Mężczyzna"/>
+                                <ComboBoxItem Content="Kobieta"/>
+                            </ComboBox>
+                            <Label Grid.Column="2" Grid.Row="2" Content="Nazwisko: " Margin="0 8"/>
+                            <ComboBox x:Name="AdressComboBox" Grid.Column="3" Grid.Row="2" Margin="0 0 20 0">
+                                <ComboBoxItem Content="Pełny"/>
+                                <ComboBoxItem Content="Potwierdzenia i przypomnienia"/>
+                                <ComboBoxItem Content="Potwierdzenia"/>
+                                <ComboBoxItem Content="Brak"/>
+                            </ComboBox>
+                        </Grid>
+                        <Button x:Name="AddPatientButton" Content="Dodaj" Margin="0 10" Width="120" Click="AddPatientButton_Click"/>
+                    </StackPanel>
+                </Grid>
 
-                <ListView x:Name="VaccinationListView" Visibility="Collapsed" ItemsSource="{Binding VaccinationsList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate DataType="VaccinationForPatientsTab">
-                            <!--<Entries:PatientsEntry/>-->
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <Grid x:Name="PatientView" Margin="0 10" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="230"/>
+                    </Grid.ColumnDefinitions>
 
-                <ListView x:Name="UpcomingVisitsListView" Visibility="Collapsed" ItemsSource="{Binding UpcomingVisitsList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate DataType="VisitsForVisitsEditorTab">
-                            <!--<Entries:PatientsEntry/>-->
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    <Button x:Name="SelectedPatientFaceButton" Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}" Click="SelectedPatientFaceButton_Click">
+                        <materialDesign:PackIcon x:Name="SelectedPatientFaceIcon" Kind="Face" Height="200" Width="200" HorizontalAlignment="Center" Foreground="Black"/>
+                    </Button>
+
+                    <Grid Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="520"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="75"/>
+                                <RowDefinition Height="75"/>
+                                <RowDefinition Height="75"/>
+                                <RowDefinition Height="75"/>
+                                <RowDefinition Height="75"/>
+                                <RowDefinition Height="Auto" MinHeight="75"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.ColumnSpan="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                            <Border Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                            <Border Grid.ColumnSpan="2" Grid.Row="2" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                            <Border Grid.ColumnSpan="2" Grid.Row="3" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                            <Border Grid.ColumnSpan="2" Grid.Row="4" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                            <Border Grid.ColumnSpan="2" Grid.Row="5" BorderBrush="Black" BorderThickness="1" Background="{x:Null}" />
+                            <Border Grid.RowSpan="6" BorderBrush="Black" BorderThickness="0 0 1 0" Background="{x:Null}" />
+                            <Label Content="Imię i Nazwisko:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Label Content="Adres mailowy:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Label Content="Data urodzenia:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Label Content="Następna Wizyta:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Label Content="Następne szczepienie:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Label Content="Ostatnia recepta:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="SelectedPatientFullNameTextBox" Text="{Binding ChosenPatient.FullName}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="True"/>
+                            <TextBox x:Name="SelectedPatientEmailTextBox" Text="{Binding ChosenPatient.EmailAdress}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="True"/>
+                            <DatePicker x:Name="DateOfBirthDatePicker" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedDateChanged="DateOfBirthDatePicker_SelectedDateChanged"/>
+                            <TextBlock x:Name="DateOfBirthTextBlock" Text="{Binding ChosenPatient.DateOfBirth}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Label x:Name="NextVisitDateTextBlock" Content="{Binding ChosenPatient.NextVisit}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Label x:Name="NextVaccinationDateTextBlock" Content="{Binding ChosenPatient.NextVaccination}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="LastPrescriptionTextBlock" Text="{Binding ChosenPatient.LastPrescription}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        </Grid>
+                    </Grid>
+
+                    <StackPanel Grid.Column="2" Margin="10 0" VerticalAlignment="Top">
+                        <Label Content="Zakres kontaktu mailowego:" BorderThickness="1" BorderBrush="Black"/>
+                        <ComboBox x:Name="EmailContactChoiceComboBox" Grid.Row="0" VerticalAlignment="Top">
+                            <ComboBoxItem Content="Pełny kontakt"/>
+                            <ComboBoxItem Content="Przypomnienia i potwierdzenia"/>
+                            <ComboBoxItem Content="Potwierdzenia"/>
+                            <ComboBoxItem Content="Brak"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="10 0" VerticalAlignment="Bottom">
+                        <Button x:Name="RegisterVisitButton" Margin="20 5" Content="Rejestruj wizytę" Background="{DynamicResource PrimaryHueMidBrush}" VerticalAlignment="Bottom" Click="RegisterVisitButton_Click"/>
+                        <Button x:Name="QuickEditButton" Margin="20 5" Content="Włącz edycje" Background="{DynamicResource PrimaryHueMidBrush}" VerticalAlignment="Bottom" Click="QuickEditButton_Click"/>
+                        <Button x:Name="SaveEditButton" Margin="20 5" Content="Zapisz zmiany" Background="{DynamicResource PrimaryHueMidBrush}" VerticalAlignment="Bottom" Visibility="Collapsed" Click="SaveEditButton_Click" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="VaccinationListView" Visibility="Visible">
+
+                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" VerticalAlignment="Stretch" Padding="10" Height="250">
+                        <Grid Margin="0 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="230"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="230"/>
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:PackIcon Kind="Plus" Grid.Column="0" Height="200" Width="200"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="520"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.ColumnSpan="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                                    <Border Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                                    <Border Grid.ColumnSpan="2" Grid.Row="2" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                                    <Border Grid.ColumnSpan="2" Grid.Row="3" BorderBrush="Black" BorderThickness="1" Background="{x:Null}" />
+                                    <Border Grid.RowSpan="4" BorderBrush="Black" BorderThickness="0 0 1 0" Background="{x:Null}" />
+                                    <Label Content="Status:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Label Content="Nazwa szczepienia:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Label Content="Data wykonania:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Label Content="Należy wykonać przed:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox x:Name="StatusTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox x:Name="VaccineNameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Label x:Name="VaccinationDoneDateTextBlock" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                    <DatePicker x:Name="VaccinationDoneDateDatePicker" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedDateChanged="VaccinationDoneDateDatePicker_SelectedDateChanged"/>
+                                    <Label x:Name="VaccinationObligatoryByDateTextBlock" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                    <DatePicker x:Name="VaccinationObligatoryByDateDatePicker" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedDateChanged="VaccinationObligatoryByDateDatePicker_SelectedDateChanged"/>
+                                </Grid>
+                            </Grid>
+
+                            <StackPanel Grid.Column="2" Margin="10 0" VerticalAlignment="Top">
+                                <Label Content="Status szczepienia:" BorderThickness="1" BorderBrush="Black"/>
+                                <ComboBox x:Name="StatusComboBox" BorderThickness="1" BorderBrush="Black">
+                                    <ComboBoxItem Content="Opcjonalne"/>
+                                    <ComboBoxItem Content="Niewykonane - obowiązkowe"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="10 0" VerticalAlignment="Bottom">
+                                <Button x:Name="AddVacinationButton" Margin="20 5" Content="Dodaj szczepienie" Background="{DynamicResource PrimaryHueMidBrush}" VerticalAlignment="Bottom" Click="AddVacinationButton_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+
+                    <ListView ItemsSource="{Binding VaccinationsList}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate DataType="VaccinationForPatientsTab">
+                                <Entries:PatientVaccinationEntry/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
 
             </Grid>
         </ScrollViewer>

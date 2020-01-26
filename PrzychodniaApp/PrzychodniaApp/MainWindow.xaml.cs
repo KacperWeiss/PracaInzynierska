@@ -175,11 +175,11 @@ namespace PrzychodniaApp
                     ContentGrid.Children.Clear();
                     ContentGrid.Children.Add(visitsEditorTab);
                     break;
-                //    case 2:
-                //        var scheduleTab = new ScheduleTab();
-                //        ContentGrid.Children.Clear();
-                //        ContentGrid.Children.Add(scheduleTab);
-                //        break;
+                //case 2:
+                //    var scheduleTab = new ScheduleTab();
+                //    ContentGrid.Children.Clear();
+                //    ContentGrid.Children.Add(scheduleTab);
+                //    break;
                 case 3:
                     ContentGrid.Children.Clear();
                     ShowLoginForm();
