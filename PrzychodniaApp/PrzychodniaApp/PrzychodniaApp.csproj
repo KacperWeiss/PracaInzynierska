@@ -81,11 +81,17 @@
     <Compile Include="Enums\UserAccess.cs" />
     <Compile Include="Logics\PasswordGenerator.cs" />
     <Compile Include="Logics\UserManagement.cs" />
+    <Compile Include="UserControlers\DataRepresantations\AvailabilitiesForScheduleTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\LongPatientForPatientsTab.cs" />
+    <Compile Include="UserControlers\DataRepresantations\MedicalWorkerForScheduleTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\ShortPatientForPatientsTab.cs" />
+    <Compile Include="UserControlers\DataRepresantations\SpecializationsForScheduleTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\UserForUsersManagementTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\VaccinationForPatientsTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\VisitForVisitsEditorTab.cs" />
+    <Compile Include="UserControlers\Entries\AvailabilityEntry.xaml.cs">
+      <DependentUpon>AvailabilityEntry.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlers\Entries\PatientsEntry.xaml.cs">
       <DependentUpon>PatientsEntry.xaml</DependentUpon>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
     <Compile Include="UserControlers\Tabs\PatientsTab.xaml.cs">
       <DependentUpon>PatientsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlers\Tabs\ScheduleTab.xaml.cs">
+      <DependentUpon>ScheduleTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlers\Tabs\UsersManagementTab.xaml.cs">
       <DependentUpon>UsersManagementTab.xaml</DependentUpon>
@@ -136,6 +145,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControlers\Entries\AvailabilityEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlers\Entries\PatientsEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlers\Tabs\PatientsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlers\Tabs\ScheduleTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

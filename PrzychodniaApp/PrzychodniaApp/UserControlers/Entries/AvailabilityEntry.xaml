@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="PrzychodniaApp.UserControlers.Entries.AvailabilityEntry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrzychodniaApp.UserControlers.Entries"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             TextElement.FontSize="14"
+             d:DesignHeight="250" d:DesignWidth="1150">
+    <Grid Margin="0 10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="230"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="750"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.ColumnSpan="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                <Border Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                <Border Grid.ColumnSpan="2" Grid.Row="2" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                <Border Grid.ColumnSpan="2" Grid.Row="3" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+                <Border Grid.ColumnSpan="2" Grid.Row="4" BorderBrush="Black" BorderThickness="1" Background="{x:Null}" />
+                <Border Grid.RowSpan="5" BorderBrush="Black" BorderThickness="0 0 1 0" Background="{x:Null}" />
+                <Label Content="Lekarz:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Content="Specjalizacja:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Content="Dzień:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Content="W godzinach:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Content="Płatność:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="MedicalWorkerTextBlock" Text="{Binding MedicalWorkerFullName}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="SpecializationTextBlock" Text="{Binding SpecializationType}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="DayOfWeekTextBlock" Text="{Binding Day}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="TimeSpanTextBlock" Text="{Binding TimeSpan}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="VisitPriceTextBlock" Text="{Binding VisitPrice}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Margin="10 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.ColumnSpan="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1 1 1 0" Background="{x:Null}" />
+            <Border Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1 0 1 1" Background="{x:Null}" />
+            <TextBox x:Name="VisitTimeStartSelectionTextBox" Text="07:30" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
+            <Button x:Name="UpButton" Grid.Row="0" Grid.Column="1" Height="Auto" Width="Auto" HorizontalAlignment="Center" Click="UpButton_Click">
+                <materialDesign:PackIcon x:Name="UpIcon" Kind="ChevronUp" Height="32.941" Width="32" HorizontalAlignment="Center"/>
+            </Button>
+            <Button x:Name="DownButton" Grid.Row="1" Grid.Column="1" Height="Auto" Width="Auto" HorizontalAlignment="Center" Click="DownButton_Click">
+                <materialDesign:PackIcon x:Name="DownIcon" Kind="ChevronDown" Height="32.941" Width="32" HorizontalAlignment="Center"/>
+            </Button>
+
+            <Button x:Name="RegisterVisitButton" Content="Rejestruj" Grid.ColumnSpan="2" Grid.Row="2" Click="RegisterVisitButton_Click"/>
+        </Grid>
+        <DatePicker x:Name="TimeStartHolderHack" SelectedDate="{Binding TimeStart}" Visibility="Collapsed"/>
+        <DatePicker x:Name="TimeEndHolderHack" SelectedDate="{Binding TimeEnd}" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>
