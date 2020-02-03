@@ -53,7 +53,7 @@
                     </Grid>
                 </Button>
 
-                <ListView x:Name="AdministratorListViewMenu" Margin="10 60 0 0" Visibility="Visible" Foreground="LightGray" SelectionChanged="AdministratorListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="AdministratorListViewMenu" Margin="10 60 0 0" Visibility="Collapsed" Foreground="LightGray" SelectionChanged="AdministratorListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="User" Width="30" Height="30"/>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PrzychodniaApp.DataBaseStuff;
+using PrzychodniaApp.UserControlers.DataRepresantations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -45,7 +47,21 @@ namespace PrzychodniaApp.UserControlers.Entries
 
         private void RegisterVisitButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (DataHolderForMainWindow.PatientId == -1)
+                {
+                    throw new Exception("You need to select patient first!");
+                }
+                using (var context = new DataBaseContext())
+                {
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

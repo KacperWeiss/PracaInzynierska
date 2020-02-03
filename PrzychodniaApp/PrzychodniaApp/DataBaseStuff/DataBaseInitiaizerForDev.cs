@@ -19,16 +19,16 @@ namespace PrzychodniaApp.DataBaseStuff
                 {
                     new DbMedicalWorker()
                     {
-                        FirstName = "FN1",
-                        LastName = "LN1",
+                        FirstName = "Adam",
+                        LastName = "Kozak",
                         Specializations = new List<DbSpecialization>(),
                         Availabilities = new List<DbAvailability>(),
                         Visits = new List<DbVisit>()
                     },
                     new DbMedicalWorker()
                     {
-                        FirstName = "FN2",
-                        LastName = "LN2",
+                        FirstName = "Bartek",
+                        LastName = "But",
                         Specializations = new List<DbSpecialization>(),
                         Availabilities = new List<DbAvailability>(),
                         Visits = new List<DbVisit>()
@@ -53,15 +53,15 @@ namespace PrzychodniaApp.DataBaseStuff
                     },
                     new DbUser()
                     {
-                        Login = "PracownikMedyczny0",
-                        Password = "PracownikMedyczny0",
+                        Login = "AdamKozak",
+                        Password = "PM123",
                         UserAccess = UserAccess.MedicalWorker,
                         MedicalWorker = MedicalWorkers[0]
                     },
                     new DbUser()
                     {
-                        Login = "PracownikMedyczny1",
-                        Password = "PracownikMedyczny1",
+                        Login = "BartekBut",
+                        Password = "PM123",
                         UserAccess = UserAccess.MedicalWorker,
                         MedicalWorker = MedicalWorkers[1]
                     }
@@ -222,9 +222,10 @@ namespace PrzychodniaApp.DataBaseStuff
                     {
                         PatientsPronounce = Pronouns.MR,
                         EmailContact = EmailContact.Full,
-                        FirstName = "Patient1FN",
-                        LastName = "Patient1LN",
-                        EmailAdress = "testmail_1@testmail.com",
+                        FirstName = "Adrian",
+                        LastName = "Kowalski",
+                        EmailAdress = "Adrian@testmail.com",
+                        NumberPesel = 010022168754,
                         DateOfBirth = new DateTime(2010, 2, 21),
                         TreatmentHistory = TreatmentHistories[0],
                         Visits = new List<DbVisit>()
@@ -233,9 +234,10 @@ namespace PrzychodniaApp.DataBaseStuff
                     {
                         PatientsPronounce = Pronouns.MRS,
                         EmailContact = EmailContact.Full,
-                        FirstName = "Patient2FN",
-                        LastName = "Patient2LN",
-                        EmailAdress = "testmail_2@testmail.com",
+                        FirstName = "Beata",
+                        LastName = "Nowacka",
+                        EmailAdress = "Beata@testmail.com",
+                        NumberPesel = 008111168754,
                         DateOfBirth = new DateTime(2008, 11, 11),
                         TreatmentHistory = TreatmentHistories[1],
                         Visits = new List<DbVisit>()
@@ -253,7 +255,7 @@ namespace PrzychodniaApp.DataBaseStuff
                     new DbVisit()
                     {
                         TimeStart = new DateTime(2020, 2, 12, 12, 0, 0), //Wednesday
-                        OptionalDescription = "Test Visit1",
+                        OptionalDescription = "Najbliższa wizyta dotycząca przeziębienia",
                         Specialization = Specializations[0],
                         MedicalWorker = MedicalWorkers[0],
                         Patient = Patients[0]
@@ -261,7 +263,7 @@ namespace PrzychodniaApp.DataBaseStuff
                     new DbVisit()
                     {
                         TimeStart = new DateTime(2020, 2, 13, 12, 0, 0), //Thursday
-                        OptionalDescription = "Test Visit2",
+                        OptionalDescription = "Najbliższa wizyta pacjenta dotycząca grypy",
                         Specialization = Specializations[0],
                         MedicalWorker = MedicalWorkers[1],
                         Patient = Patients[1]
@@ -274,7 +276,7 @@ namespace PrzychodniaApp.DataBaseStuff
                     new DbVisit()
                     {
                         TimeStart = new DateTime(2020, 1, 15, 12, 0, 0), //Wednesday
-                        OptionalDescription = "Test PastVisit1",
+                        OptionalDescription = "Odbyta wizyta dotycząca choroby zatok",
                         Specialization = Specializations[0],
                         MedicalWorker = MedicalWorkers[0],
                         Patient = Patients[0]
@@ -282,7 +284,7 @@ namespace PrzychodniaApp.DataBaseStuff
                     new DbVisit()
                     {
                         TimeStart = new DateTime(2020, 1, 16, 12, 0, 0), //Thursday
-                        OptionalDescription = "Test PastVisit2",
+                        OptionalDescription = "Odbyta wizyta dotycząca choroby gardła",
                         Specialization = Specializations[0],
                         MedicalWorker = MedicalWorkers[1],
                         Patient = Patients[1]
@@ -353,12 +355,12 @@ namespace PrzychodniaApp.DataBaseStuff
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Illness1",
+                        VaccinesName = "Meassels",
                         VaccineStatus = VaccineStatus.Optional
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Illness2",
+                        VaccinesName = "Sore Throat",
                         VaccineStatus = VaccineStatus.ObligatoryAlreadyVaccined,
                         ObligatoryBy = new DateTime(2020, 1 , 10),
                         VaccinationDate = new DateTime(2020, 1, 05)
@@ -371,12 +373,12 @@ namespace PrzychodniaApp.DataBaseStuff
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Illness1",
+                        VaccinesName = "Meassels",
                         VaccineStatus = VaccineStatus.Optional
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Illness2",
+                        VaccinesName = "Sore Throat",
                         VaccineStatus = VaccineStatus.ObligatoryAlreadyVaccined,
                         ObligatoryBy = new DateTime(2020, 1 , 10),
                         VaccinationDate = new DateTime(2020, 1, 05)

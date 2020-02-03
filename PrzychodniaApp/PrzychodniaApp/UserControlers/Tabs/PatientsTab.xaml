@@ -69,6 +69,7 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             
                             <Label Grid.Column="0" Grid.Row="0" Content="Imię: " Margin="0 8"/>
@@ -77,6 +78,8 @@
                             <TextBox x:Name="SurnameTextBox" Grid.Column="1" Grid.Row="1" Margin="0 0 20 0"/>
                             <Label Grid.Column="0" Grid.Row="2" Content="Email: " Margin="0 8"/>
                             <TextBox x:Name="EmailTextBox" Grid.Column="1" Grid.Row="2" Margin="0 0 20 0"/>
+                            <Label Grid.Column="0" Grid.Row="3" Content="Pesel: " Margin="0 8"/>
+                            <TextBox x:Name="PeselextBox" Grid.Column="1" Grid.Row="3" Margin="0 0 20 0"/>
 
                             <Label Grid.Column="2" Grid.Row="0" Content="Data urodzenia: " Margin="0 8"/>
                             <DatePicker x:Name="BirthdayDatePicker" Grid.Column="3" Grid.Row="0" Margin="0 0 20 0"/>
@@ -85,7 +88,7 @@
                                 <ComboBoxItem Content="Mężczyzna"/>
                                 <ComboBoxItem Content="Kobieta"/>
                             </ComboBox>
-                            <Label Grid.Column="2" Grid.Row="2" Content="Nazwisko: " Margin="0 8"/>
+                            <Label Grid.Column="2" Grid.Row="2" Content="Kontakt email: " Margin="0 8"/>
                             <ComboBox x:Name="AdressComboBox" Grid.Column="3" Grid.Row="2" Margin="0 0 20 0">
                                 <ComboBoxItem Content="Pełny"/>
                                 <ComboBoxItem Content="Potwierdzenia i przypomnienia"/>

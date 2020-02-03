@@ -41,7 +41,7 @@ namespace PrzychodniaApp
             MiddleScreenPopupGrid.Children.Add(loginForm);
         }
 
-        public void LogIn(UserAccess accountType)
+        public void LogInType(UserAccess accountType)
         {
             AdministratorListViewMenu.Visibility = Visibility.Collapsed;
             ReceptionListViewMenu.Visibility = Visibility.Collapsed;

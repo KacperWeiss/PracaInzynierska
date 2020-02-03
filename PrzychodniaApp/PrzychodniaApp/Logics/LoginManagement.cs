@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PrzychodniaApp.Logics
 {
-    public static class UserManagement
+    public static class LoginManagement
     {
         static public DbUser LoginAs(string login, string password)
         {

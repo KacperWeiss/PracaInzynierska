@@ -137,11 +137,10 @@ namespace PrzychodniaApp.UserControlers.Tabs
         {
             try
             {
-
                 var currentButton = (Button)e.Source;
                 int index = int.Parse(currentButton.Uid);
 
-                if (!IsPatientSelected && index != 1)
+                if (!IsPatientSelected && !(index == 1 || index == 0))
                 {
                     throw new Exception("Patient must be selected first!");
                 }

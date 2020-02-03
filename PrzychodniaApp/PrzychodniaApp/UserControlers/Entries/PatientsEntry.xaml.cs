@@ -53,6 +53,7 @@ namespace PrzychodniaApp.UserControlers.Entries
                             patientsTab.ChosenPatient = LongPatientForPatientsTab.GetRepresentation(Convert.ToInt32(IdHolderHack.Text));
                             patientsTab.VaccinationsList = VaccinationForPatientsTab.GetRepresentation(patientsTab.ChosenPatient.TreatmentHistoryId);
                             patientsTab.VisitsList = VisitForVisitsEditorTab.GetRepresentation().Where(x => x.Patient == patientsTab.ChosenPatient.FullName).ToList();
+                            DataHolderForMainWindow.PatientId = Convert.ToInt32(IdHolderHack.Text);
                             patientsTab.IsPatientSelected = true;
                         }
                     }

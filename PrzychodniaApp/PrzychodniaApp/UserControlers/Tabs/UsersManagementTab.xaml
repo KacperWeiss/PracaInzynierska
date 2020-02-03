@@ -105,7 +105,7 @@
             </GroupBox>
             <StackPanel Grid.Row="1">
                 <TextBlock Text="INSTRUKCJA" FontWeight="Bold" Margin="10 0 0 0"/>
-                <TextBlock Text="" Margin="10 0 0 0"/>
+                <TextBlock Text="{Binding Instruction}" Margin="10 0 0 0"/>
             </StackPanel>
         </Grid>
     </Grid>

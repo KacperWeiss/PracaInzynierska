@@ -14,6 +14,10 @@ namespace PrzychodniaApp.DataBaseStuff.Models
     public class DbPatient : DbEntity
     {
         /// <summary>
+        /// Provides neccassary pesel number.
+        /// </summary>
+        public long NumberPesel { get; set; }
+        /// <summary>
         /// Describes if patient is male or female.
         /// </summary>
         [Required]
@@ -40,6 +44,7 @@ namespace PrzychodniaApp.DataBaseStuff.Models
         public string LastName { get; set; }
 
         public string EmailAdress { get; set; }
+
 
         /// <summary>
         /// Date of birth of the patient

@@ -1,6 +1,7 @@
 ﻿using PrzychodniaApp.DataBaseStuff.Models;
 using PrzychodniaApp.Enums;
 using PrzychodniaApp.Logics;
+using PrzychodniaApp.UserControlers.DataRepresantations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,6 @@ namespace PrzychodniaApp.UserControlers
     /// </summary>
     public partial class LoginForm : UserControl
     {
-        public int userId;
-
         public LoginForm()
         {
             InitializeComponent();
@@ -41,26 +40,24 @@ namespace PrzychodniaApp.UserControlers
                     switch (LoginTextBox.Text)
                     {
                         case "a":
-                            parentWindow.LogIn(UserAccess.Admin);
+                            parentWindow.LogInType(UserAccess.Admin);
                             return;
                         case "r":
-                            parentWindow.LogIn(UserAccess.Reception);
+                            parentWindow.LogInType(UserAccess.Reception);
                             return;
                         case "mw":
-                            parentWindow.LogIn(UserAccess.MedicalWorker);
+                            parentWindow.LogInType(UserAccess.MedicalWorker);
                             return;
 
                     }
 
-                    if (!String.IsNullOrEmpty(LoginTextBox.Text) && !String.IsNullOrEmpty(PasswordTextBox.Password))
+                    if (!String.IsNullOrEmpty(LoginTextBox.Text) && !String.IsNullOrEmpty(PasswordBox.Password))
                     {
                         try
                         {
-                            DbUser user = UserManagement.LoginAs(LoginTextBox.Text, PasswordTextBox.Password);
-                            UserAccess accountType = (UserAccess)user.UserAccess;
-                            userId = user.Id;
+                            DataHolderForMainWindow.User = LoginManagement.LoginAs(LoginTextBox.Text, PasswordBox.Password);
 
-                            parentWindow.LogIn(accountType);
+                            parentWindow.LogInType(DataHolderForMainWindow.User.UserAccess);
                         }
                         catch (Exception ex)
                         {

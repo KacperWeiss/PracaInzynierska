@@ -44,6 +44,13 @@ namespace PrzychodniaApp.UserControlers.Tabs
             }
         }
 
+        public String Instruction { get; } = 
+            "W celu utworzenia konta użytkownika należy:\n" +
+            "1. Wybrać jego funkcje z dostępnych opcji.\n" +
+            "2. Wypełnić odpowiednie pola, opcjonalnie można wygenerować\n" +
+            "losowe hasło.\n" +
+            "3.Zakończyć proces klikając przycisk \"Dodaj\"";
+
         public UsersManagementTab()
         {
             InitializeComponent();

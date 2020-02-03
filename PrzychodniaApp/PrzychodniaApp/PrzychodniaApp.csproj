@@ -80,8 +80,9 @@
     <Compile Include="Enums\CustomEnumToString.cs" />
     <Compile Include="Enums\UserAccess.cs" />
     <Compile Include="Logics\PasswordGenerator.cs" />
-    <Compile Include="Logics\UserManagement.cs" />
+    <Compile Include="Logics\LoginManagement.cs" />
     <Compile Include="UserControlers\DataRepresantations\AvailabilitiesForScheduleTab.cs" />
+    <Compile Include="UserControlers\DataRepresantations\DataHolderForMainWindow.cs" />
     <Compile Include="UserControlers\DataRepresantations\LongPatientForPatientsTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\MedicalWorkerForScheduleTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\ShortPatientForPatientsTab.cs" />
