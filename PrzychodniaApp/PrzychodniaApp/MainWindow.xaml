@@ -101,7 +101,7 @@
                     </ListViewItem>
                 </ListView>
 
-                <ListView x:Name="MedicalWorkerListViewMenu" Margin="10 60 0 0" Visibility="Collapsed" Foreground="LightGray" SelectionChanged="MedicalWorkerListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="MedicalWorkerListViewMenu" Margin="10 60 0 0" Visibility="Visible" Foreground="LightGray" SelectionChanged="MedicalWorkerListViewMenu_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FormatListNumbered" Width="30" Height="30"/>

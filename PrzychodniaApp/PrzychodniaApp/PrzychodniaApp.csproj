@@ -56,8 +56,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -86,10 +88,13 @@
     <Compile Include="UserControlers\DataRepresantations\LongPatientForPatientsTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\MedicalWorkerForScheduleTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\ShortPatientForPatientsTab.cs" />
+    <Compile Include="UserControlers\DataRepresantations\SicnessForCurrentVisitTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\SpecializationsForScheduleTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\UserForUsersManagementTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\VaccinationForPatientsTab.cs" />
+    <Compile Include="UserControlers\DataRepresantations\VisitDataForCurrentVisitTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\VisitForVisitsEditorTab.cs" />
+    <Compile Include="UserControlers\DataRepresantations\FutureVisitForVisitsListTab.cs" />
     <Compile Include="UserControlers\Entries\AvailabilityEntry.xaml.cs">
       <DependentUpon>AvailabilityEntry.xaml</DependentUpon>
     </Compile>
@@ -102,6 +107,9 @@
     <Compile Include="UserControlers\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlers\Tabs\CurrentVisitTab.xaml.cs">
+      <DependentUpon>CurrentVisitTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlers\Tabs\PatientsTab.xaml.cs">
       <DependentUpon>PatientsTab.xaml</DependentUpon>
     </Compile>
@@ -113,6 +121,9 @@
     </Compile>
     <Compile Include="UserControlers\Tabs\VisitsEditorTab.xaml.cs">
       <DependentUpon>VisitsEditorTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlers\Tabs\VisitsListTab.xaml.cs">
+      <DependentUpon>VisitsListTab.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +173,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControlers\Tabs\CurrentVisitTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlers\Tabs\PatientsTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlers\Tabs\VisitsEditorTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlers\Tabs\VisitsListTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

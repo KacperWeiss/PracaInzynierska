@@ -10,6 +10,7 @@ namespace PrzychodniaApp.UserControlers.DataRepresantations
     public static class DataHolderForMainWindow
     {
         public static int PatientId { get; set; } = -1;
+        public static int ChosenVisitId { get; set; } = -1;
         public static DbUser User { get; set; }
     }
 }

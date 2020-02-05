@@ -1,5 +1,6 @@
 ﻿using PrzychodniaApp.Enums;
 using PrzychodniaApp.UserControlers;
+using PrzychodniaApp.UserControlers.DataRepresantations;
 using PrzychodniaApp.UserControlers.Tabs;
 using System;
 using System.Collections.Generic;
@@ -189,31 +190,55 @@ namespace PrzychodniaApp
             }
         }
 
+        public void ChangeTabToCurrentVisitTab()
+        {
+            MedicalWorkerListViewMenu.SelectedIndex = 1;
+            transitioningContentSlide.OnApplyTemplate();
+            menuPointer.Margin = new Thickness(0, menuPointerOffset + 60, 0, 0);
+
+            var currentVisitTab = new CurrentVisitTab();
+            ContentGrid.Children.Clear();
+            ContentGrid.Children.Add(currentVisitTab);
+        }
+
         private void MedicalWorkerListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int index = MedicalWorkerListViewMenu.SelectedIndex;
-            transitioningContentSlide.OnApplyTemplate();
-            menuPointer.Margin = new Thickness(0, menuPointerOffset + (60 * index), 0, 0);
-
-            switch (index)
+            try
             {
-                //case 0:
-                //    var visitsListTab = new VisitsListTab();
-                //    ContentGrid.Children.Clear();
-                //    ContentGrid.Children.Add(visitsListTab);
-                //    break;
-                //case 1:
-                //    var currentVisitListTab = new CurrentVisitListTab();
-                //    ContentGrid.Children.Clear();
-                //    ContentGrid.Children.Add(currentVisitListTab);
-                //    break;
-                case 2:
-                    ContentGrid.Children.Clear();
-                    ShowLoginForm();
-                    break;
-                default:
-                    break;
+                int index = MedicalWorkerListViewMenu.SelectedIndex;
+                if (index == 1 && DataHolderForMainWindow.ChosenVisitId == -1)
+                {
+                    MedicalWorkerListViewMenu.SelectedIndex = 0;
+                    throw new Exception("Musisz najpierw wybrać wizytę!");
+                }
+                transitioningContentSlide.OnApplyTemplate();
+                menuPointer.Margin = new Thickness(0, menuPointerOffset + (60 * index), 0, 0);
+
+                switch (index)
+                {
+                    case 0:
+                        var visitsListTab = new VisitsListTab();
+                        ContentGrid.Children.Clear();
+                        ContentGrid.Children.Add(visitsListTab);
+                        break;
+                    case 1:
+                        var currentVisitTab = new CurrentVisitTab();
+                        ContentGrid.Children.Clear();
+                        ContentGrid.Children.Add(currentVisitTab);
+                        break;
+                    case 2:
+                        ContentGrid.Children.Clear();
+                        ShowLoginForm();
+                        break;
+                    default:
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

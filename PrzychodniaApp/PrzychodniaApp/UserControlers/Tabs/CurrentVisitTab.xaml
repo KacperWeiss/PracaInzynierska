@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="PrzychodniaApp.UserControlers.Tabs.CurrentVisitTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrzychodniaApp.UserControlers.Tabs"
+             mc:Ignorable="d" 
+             TextElement.FontSize="15"
+             d:DesignHeight="650" d:DesignWidth="1200">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="455"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="330"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="Pacjent" Margin="30 20 20 0" MaxWidth="420" MaxHeight="310" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0">
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Pacjent:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <Label Content="Wiek:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <Label Content="Spec.:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <Label Content="Opis:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="PacientTextBox" Text="{Binding CurrentVisit.PatientsName}" Grid.Row="0" Grid.Column="1" Margin="15 10 50 0" IsReadOnly="True" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="AgeTextBox" Text="{Binding CurrentVisit.PatientsAge}" Grid.Row="1" Grid.Column="1" Margin="15 10 50 0" IsReadOnly="True" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="VisitTypeTextBox" Text="{Binding CurrentVisit.VisitType}" Grid.Row="2" Grid.Column="1" Margin="15 10 50 0" IsReadOnly="True" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="OptionalDescriptionTextBox" Text="{Binding CurrentVisit.OptionalDescription}" Grid.Row="3" Grid.Column="1" Margin="15 10 50 0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Bottom"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Przebyte choroby" Margin="30 20 20 0" MaxWidth="420" MaxHeight="300" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0">
+                <ScrollViewer x:Name="SicknessScrollViewer" PreviewMouseWheel="SicknessScrollViewer_PreviewMouseWheel">
+                    <ListView x:Name="SicknessListView" ItemsSource="{Binding PastSicknessList}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate DataType="SicnessForCurrentVisitTab">
+                                <Grid Margin="10 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1 0 0 0" Background="{x:Null}" />
+                                    <TextBlock Text="{Binding When}" Grid.Column="0" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollViewer>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Column="1">
+            <GroupBox Header="Arkusz obecnej wizyty" Margin="20 20 20 0" MaxWidth="340" Height="550" VerticalAlignment="Top">
+                <StackPanel>
+                    <Label Content="Zdjagnozowana choroba:"/>
+                    <TextBox x:Name="DiagnosedSicknessTextBox"/>
+                    <Border BorderThickness="1"/>
+                    <Label Content="Opis symptomów:"/>
+                    <TextBox x:Name="SymptomsDescriptionTextBox" TextWrapping="Wrap"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Column="2">
+            <GroupBox Header="Recepta" Margin="20 20 20 0" MaxWidth="340" Height="550" VerticalAlignment="Top">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                            <Label Content="Nazwa leku:"/>
+                            <TextBox x:Name="MedicinesNameTextBox"/>
+                        </StackPanel>
+                        <Border Grid.Column="1" BorderThickness="1 0 0 0"/>
+                        <StackPanel Grid.Column="1">
+                            <Label Content="Dawkowanie:"/>
+                            <TextBox x:Name="MedicinesDosageTextBox"/>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="AddMedicineButton" Margin="10 5" Width="150" Content="Dodaj" Click="AddMedicineButton_Click"/>
+                        <Button x:Name="RemoveMedicineButton" Margin="10 5" Width="150" Content="Usuń" Click="RemoveMedicineButton_Click"/>
+                    </StackPanel>
+                    <ScrollViewer x:Name="PrescriptionScrollViewer" Grid.Row="2" PreviewMouseWheel="PrescriptionScrollViewer_PreviewMouseWheel">
+                        <ListView x:Name="PrescriptionListView" ItemsSource="{Binding PrescriptionList}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate DataType="DbPrescribedMedications">
+                                    <Grid Margin="10 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1 0 0 0" Background="{x:Null}" />
+                                        <TextBlock Text="{Binding MedicinesName}" Grid.Column="0" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Dosage}" Grid.Column="1" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
+            <StackPanel Margin="20 10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="PrintPrescriptionButton" Margin="10 5" Width="180" Content="Wydrukuj receptę" Click="PrintPrescriptionButton_Click"/>
+                <Button x:Name="CreateDoctorsReferalButton" Margin="10 5" Width="180" Content="Stwórz skierowanie" Click="CreateDoctorsReferalButton_Click"/>
+                <Button x:Name="FinishVisitButton" Margin="10 5" Width="180" Content="Zakończ wizytę" Click="FinishVisitButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
