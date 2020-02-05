@@ -27,6 +27,7 @@ namespace PrzychodniaApp
         bool menuExtended = true;
         int menuPointerOffset = 112;
         LoginForm loginForm = new LoginForm();
+        SettingsForm settingsForm = new SettingsForm();
 
         public MainWindow()
         {
@@ -239,6 +240,14 @@ namespace PrzychodniaApp
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuGrid.Visibility = Visibility.Collapsed;
+            ContentGrid.Visibility = Visibility.Collapsed;
+            MiddleScreenPopupGrid.Children.Clear();
+            MiddleScreenPopupGrid.Children.Add(settingsForm);
         }
     }
 }
