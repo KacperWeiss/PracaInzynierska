@@ -55,7 +55,7 @@
             </ListView>
         </ScrollViewer>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 20">
-            <Button x:Name="RescheduleButton" Content="Przełóż wizytę" Margin="8 0" Click="RescheduleButton_Click"/>
+            <Button x:Name="RescheduleButton" Visibility="Collapsed" Content="Przełóż wizytę" Margin="8 0" Click="RescheduleButton_Click"/>
             <Button x:Name="EditDescriptionButton" Content="Edytuj opis wizyty" Margin="8 0" Click="EditDescriptionButton_Click"/>
             <Button x:Name="DeleteVisitButton" Content="Usuń" Margin="8 0 0 0" Click="DeleteVisitButton_Click"/>
         </StackPanel>
