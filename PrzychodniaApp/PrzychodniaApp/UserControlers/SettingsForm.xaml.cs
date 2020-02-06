@@ -37,6 +37,10 @@ namespace PrzychodniaApp.UserControlers
                 }
                 using (var context = new DataBaseContext())
                 {
+                    if (context.Users.Single(x => x.Id == DataHolderForMainWindow.User.Id).Password == CurrentPasswordBox.Password)
+                    {
+                        throw new Exception("Wpisano błędne hasło! Aby zmienić hasło należy wpisać poprawne hasło, a dopiero wtedy wpisać nowe.");
+                    }
                     context.Users.Single(x => x.Id == DataHolderForMainWindow.User.Id).Password = NewPasswordBox.Password;
                     context.SaveChanges();
 

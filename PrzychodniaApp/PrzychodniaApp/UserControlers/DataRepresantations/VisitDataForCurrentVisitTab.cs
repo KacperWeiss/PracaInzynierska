@@ -13,6 +13,7 @@ namespace PrzychodniaApp.UserControlers.DataRepresantations
         public int VisitId { get; set; }
         public int TreatmentHistoryId { get; set; }
         public string PatientsName { get; set; }
+        public string PatientsPESEL { get; set; }
         public string PatientsAge { get; set; }
         public string VisitType { get; set; }
         public string OptionalDescription { get; set; }
@@ -36,6 +37,7 @@ namespace PrzychodniaApp.UserControlers.DataRepresantations
                         VisitId = x.Id,
                         TreatmentHistoryId = x.Patient.TreatmentHistory.Id,
                         PatientsName = x.Patient.FirstName + " " + x.Patient.LastName,
+                        PatientsPESEL = x.Patient.NumberPesel.ToString(),
                         PatientsAge = ageString,
                         VisitType = x.Specialization.Type,
                         OptionalDescription = x.OptionalDescription

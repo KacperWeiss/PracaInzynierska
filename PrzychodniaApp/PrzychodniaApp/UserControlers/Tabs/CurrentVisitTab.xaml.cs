@@ -1,5 +1,6 @@
 ﻿using PrzychodniaApp.DataBaseStuff;
 using PrzychodniaApp.DataBaseStuff.Models;
+using PrzychodniaApp.Logics;
 using PrzychodniaApp.UserControlers.DataRepresantations;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -69,7 +71,7 @@ namespace PrzychodniaApp.UserControlers.Tabs
             }
             set
             {
-                if(prescriptionList != value)
+                if (prescriptionList != value)
                 {
                     prescriptionList = value;
                     OnPropertyChanged();
@@ -137,12 +139,52 @@ namespace PrzychodniaApp.UserControlers.Tabs
 
         private void PrintPrescriptionButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                using (var context = new DataBaseContext())
+                {
+                    var medicalWorker = context.Users.Include(x => x.MedicalWorker).Single(x => x.Id == DataHolderForMainWindow.User.Id).MedicalWorker;
 
+                    string medicinesList = "";
+                    string medicinesPaymentsList = "";
+                    foreach (var medicine in PrescriptionList)
+                    {
+                        medicinesList += medicine.MedicinesName + " " + medicine.Dosage + "\n";
+                        medicinesPaymentsList += "50\n";
+                    }
+
+                    PDFCreator.MakePrescription(new PrescriptionPDFRequiredData()
+                    {
+                        PacientName = CurrentVisit.PatientsName,
+                        PacientPESEL = CurrentVisit.PatientsPESEL,
+                        MedicalWorkerName = medicalWorker.FirstName + " " + medicalWorker.LastName,
+                        Medicines = medicinesList,
+                        MedicinesPayment = medicinesPaymentsList
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CreateDoctorsReferalButton_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                PDFCreator.MakeRefferal(new RefferalPDFRequiredData()
+                {
+                    PacientName = CurrentVisit.PatientsName,
+                    PacientPESEL = CurrentVisit.PatientsPESEL,
+                    PacientAge = CurrentVisit.PatientsAge,
+                    Sickness = DiagnosedSicknessTextBox.Text
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void FinishVisitButton_Click(object sender, RoutedEventArgs e)
