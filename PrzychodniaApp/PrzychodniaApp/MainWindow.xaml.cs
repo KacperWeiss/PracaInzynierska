@@ -159,6 +159,17 @@ namespace PrzychodniaApp
             }
         }
 
+        public void ChangeTabToScheduleTab()
+        {
+            ReceptionListViewMenu.SelectedIndex = 2;
+            transitioningContentSlide.OnApplyTemplate();
+            menuPointer.Margin = new Thickness(0, menuPointerOffset + 120, 0, 0);
+
+            var scheduleTab = new ScheduleTab();
+            ContentGrid.Children.Clear();
+            ContentGrid.Children.Add(scheduleTab);
+        }
+
         private void ReceptionListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int index = ReceptionListViewMenu.SelectedIndex;

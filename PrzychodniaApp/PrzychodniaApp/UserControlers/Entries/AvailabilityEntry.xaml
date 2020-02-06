@@ -70,5 +70,7 @@
         </Grid>
         <DatePicker x:Name="TimeStartHolderHack" SelectedDate="{Binding TimeStart}" Visibility="Collapsed"/>
         <DatePicker x:Name="TimeEndHolderHack" SelectedDate="{Binding TimeEnd}" Visibility="Collapsed"/>
+        <TextBlock x:Name="MedicalWorkerIdHolderHack" Text="{Binding MedicalWorkerId}" Visibility="Collapsed"/>
+        <TextBlock x:Name="SpecializationIdHolderHack" Text="{Binding SpecializationId}" Visibility="Collapsed"/>
     </Grid>
 </UserControl>

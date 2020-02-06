@@ -72,7 +72,25 @@ namespace PrzychodniaApp.UserControlers.Tabs
 
         private void ResetPasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            var userId = UserList[UsersListView.SelectedIndex].UserId;
+            try
+            {
+                var userId = UserList[UsersListView.SelectedIndex].UserId;
+                if (userId == DataHolderForMainWindow.User.Id)
+                {
+                    throw new Exception("You can't reset password for your own, use settings instead and choose your own password yourself!");
+                }
+
+                using (var context = new DataBaseContext())
+                {
+                    context.Users.Single(x => x.Id == userId).Password = PasswordTextBox.Password;
+                    Clipboard.SetText("Login: " + context.Users.Single(x => x.Id == userId).Login + "\n Password: " + PasswordTextBox.Password);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void EditAccessLevelButton_Click(object sender, RoutedEventArgs e)
@@ -163,14 +181,14 @@ namespace PrzychodniaApp.UserControlers.Tabs
         private void GeneratePasswordButton_Click(object sender, RoutedEventArgs e)
         {
             string password = PasswordGenerator.GetRandomPassword();
-            PasswordTextBox.Text = password;
+            PasswordTextBox.Password = password;
         }
 
         private void SaveNewUserButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (LoginTextBox.Text == "" || PasswordTextBox.Text == "")
+                if (LoginTextBox.Text == "" || PasswordTextBox.Password == "")
                 {
                     throw new Exception("Name and surname must be provided!");
                 }
@@ -226,7 +244,7 @@ namespace PrzychodniaApp.UserControlers.Tabs
                             context.Users.Add(new DbUser()
                             {
                                 Login = LoginTextBox.Text,
-                                Password = PasswordTextBox.Text,
+                                Password = PasswordTextBox.Password,
                                 UserAccess = newUserAccess,
                                 MedicalWorker = NewMedicalWorker
                             });
@@ -237,7 +255,7 @@ namespace PrzychodniaApp.UserControlers.Tabs
                             context.Users.Add(new DbUser()
                             {
                                 Login = LoginTextBox.Text,
-                                Password = PasswordTextBox.Text,
+                                Password = PasswordTextBox.Password,
                                 UserAccess = newUserAccess
                             });
                             context.SaveChanges();
@@ -255,7 +273,7 @@ namespace PrzychodniaApp.UserControlers.Tabs
 
         private void CopyLoginAndPasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText("Login: " + LoginTextBox.Text + "\n Password: " + PasswordTextBox.Text);
+            Clipboard.SetText("Login: " + LoginTextBox.Text + "\n Password: " + PasswordTextBox.Password);
         }
     }
 }

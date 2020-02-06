@@ -75,7 +75,7 @@
                         <Label Content="Login:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                         <Label Content="Password:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                         <TextBox x:Name="LoginTextBox" Grid.Row="0" Grid.Column="1" Margin="15 10 50 0"/>
-                        <TextBox x:Name="PasswordTextBox" Grid.Row="1" Grid.Column="1" Margin="15 10 50 0"/>
+                        <PasswordBox x:Name="PasswordTextBox" Grid.Row="1" Grid.Column="1" Margin="15 10 50 0"/>
                     </Grid>
                     <Grid x:Name="MedicalWorkerNameGrid" Visibility="Collapsed">
                         <Grid.RowDefinitions>

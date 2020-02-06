@@ -308,7 +308,15 @@ namespace PrzychodniaApp.UserControlers.Tabs
 
         private void RegisterVisitButton_Click(object sender, RoutedEventArgs e)
         {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    MainWindow parentWindow = (window as MainWindow);
 
+                    parentWindow.ChangeTabToScheduleTab();
+                }
+            }
         }
 
         private void QuickEditButton_Click(object sender, RoutedEventArgs e)
