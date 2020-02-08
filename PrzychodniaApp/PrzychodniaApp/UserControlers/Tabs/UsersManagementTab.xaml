@@ -16,13 +16,13 @@
         <Grid Grid.Column="0" VerticalAlignment="Top" Margin="18 5 0 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="190"/>
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="140"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1 0 1 0" Background="{x:Null}" />
-            <TextBlock Text="Username" Grid.Column="0" Margin="10 0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-            <TextBlock Text="User Access" Grid.Column="1" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-            <TextBlock Text="Specializations" Grid.Column="2" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Text="Nazwa użytkownika" Grid.Column="0" Margin="10 0" VerticalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Text="Rola" Grid.Column="1" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Text="Specializacje" Grid.Column="2" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
         </Grid>
         <ScrollViewer x:Name="UsersScrollViewer" Grid.Column="0" Margin="0 25 0 60" PreviewMouseWheel="UsersScrollViewer_PreviewMouseWheel">
             <ListView x:Name="UsersListView" ItemsSource="{Binding UserList}">
@@ -31,7 +31,7 @@
                         <Grid Margin="10 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="190"/>
-                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="140"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1 0 1 0" Background="{x:Null}" />
@@ -73,8 +73,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Content="Login:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                        <Label Content="Password:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                        <TextBox x:Name="LoginTextBox" Grid.Row="0" Grid.Column="1" Margin="15 10 50 0"/>
+                        <Label Content="Hasło:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="LoginTextBox" Grid.Row="0" Grid.Column="1" Margin="15 10 50 0" VerticalContentAlignment="Center"/>
                         <PasswordBox x:Name="PasswordTextBox" Grid.Row="1" Grid.Column="1" Margin="15 10 50 0"/>
                     </Grid>
                     <Grid x:Name="MedicalWorkerNameGrid" Visibility="Collapsed">
@@ -87,10 +87,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Content="Name:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                        <Label Content="Surname:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                        <TextBox x:Name="FirstNameTextBox" Grid.Row="0" Grid.Column="1" Margin="20 10 50 0"/>
-                        <TextBox x:Name="LastNameTextBox" Grid.Row="1" Grid.Column="1" Margin="20 10 50 0"/>
+                        <Label Content="Imię:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <Label Content="Nazwisko:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="FirstNameTextBox" Grid.Row="0" Grid.Column="1" Margin="20 10 50 0" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="LastNameTextBox" Grid.Row="1" Grid.Column="1" Margin="20 10 50 0" VerticalContentAlignment="Center"/>
                     </Grid>
                     <Grid Width="250">
                         <Grid.ColumnDefinitions>

@@ -43,10 +43,10 @@ namespace PrzychodniaApp.UserControlers
                             parentWindow.LogInType(UserAccess.Admin);
                             return;
                         case "r":
-                            parentWindow.LogInType(UserAccess.Reception);
+                            parentWindow.LogInType(UserAccess.Recepcjonista);
                             return;
                         case "mw":
-                            parentWindow.LogInType(UserAccess.MedicalWorker);
+                            parentWindow.LogInType(UserAccess.PracownikMedyczny);
                             return;
 
                     }

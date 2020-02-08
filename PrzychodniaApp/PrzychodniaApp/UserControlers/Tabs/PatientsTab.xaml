@@ -37,9 +37,9 @@
 
                     <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Gainsboro">
                         <Label Content="Imię:" Width="50" Height="30" FontWeight="DemiBold" FontSize="16"/>
-                        <TextBox x:Name="FirstNameSearchTextBox" Width="400" Height="30" Background="White"/>
+                        <TextBox x:Name="FirstNameSearchTextBox" Width="400" Height="30" Background="White" VerticalContentAlignment="Center"/>
                         <Label Content="Nazwisko:" Width="90" Height="30" FontWeight="DemiBold" FontSize="16"/>
-                        <TextBox x:Name="LastNameSearchTextBox" Width="400" Height="30" Background="White"/>
+                        <TextBox x:Name="LastNameSearchTextBox" Width="400" Height="30" Background="White" VerticalContentAlignment="Center"/>
                         <Button x:Name="SearchButton" Content="Szukaj" Width="115" Height="30" FontWeight="Bold" Foreground="Black" Background="LightGray" BorderBrush="{x:Null}" Click="SearchButton_Click"/>
                         <Button x:Name="ResetButton" Content="Reset" Width="115" Height="30" FontWeight="Bold" Foreground="Black" Background="LightGray" BorderBrush="{x:Null}" Click="ResetButton_Click"/>
                     </StackPanel>
@@ -70,16 +70,23 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             
                             <Label Grid.Column="0" Grid.Row="0" Content="Imię: " Margin="0 8"/>
-                            <TextBox x:Name="NameTextBox" Grid.Column="1" Grid.Row="0" Margin="0 0 20 0"/>
+                            <TextBox x:Name="NameTextBox" Grid.Column="1" Grid.Row="0" Margin="0 0 20 0" VerticalContentAlignment="Center"/>
                             <Label Grid.Column="0" Grid.Row="1" Content="Nazwisko: " Margin="0 8"/>
-                            <TextBox x:Name="SurnameTextBox" Grid.Column="1" Grid.Row="1" Margin="0 0 20 0"/>
+                            <TextBox x:Name="SurnameTextBox" Grid.Column="1" Grid.Row="1" Margin="0 0 20 0" VerticalContentAlignment="Center"/>
                             <Label Grid.Column="0" Grid.Row="2" Content="Email: " Margin="0 8"/>
-                            <TextBox x:Name="EmailTextBox" Grid.Column="1" Grid.Row="2" Margin="0 0 20 0"/>
+                            <TextBox x:Name="EmailTextBox" Grid.Column="1" Grid.Row="2" Margin="0 0 20 0" VerticalContentAlignment="Center"/>
                             <Label Grid.Column="0" Grid.Row="3" Content="Pesel: " Margin="0 8"/>
-                            <TextBox x:Name="PeselextBox" Grid.Column="1" Grid.Row="3" Margin="0 0 20 0"/>
+                            <TextBox x:Name="PeselTextBox" Grid.Column="1" Grid.Row="3" Margin="0 0 20 0" VerticalContentAlignment="Center"/>
+                            <Label Grid.Column="2" Grid.Row="3" Content="Miasto: " Margin="0 8"/>
+                            <TextBox x:Name="CityTextBox" Grid.Column="3" Grid.Row="3" Margin="0 0 20 0" VerticalContentAlignment="Center"/>
+                            <Label Grid.Column="0" Grid.Row="4" Content="Adres: " Margin="0 8"/>
+                            <TextBox x:Name="AdressTextBox" Grid.Column="1" Grid.Row="4" Margin="0 0 20 0" VerticalContentAlignment="Center"/>
+                            <!--<Label Grid.Column="2" Grid.Row="4" Content="Kod pocztowy: " Margin="0 8"/>
+                            <TextBox x:Name="PostalCode" Grid.Column="3" Grid.Row="4" Margin="0 0 20 0" VerticalContentAlignment="Center"/>-->
 
                             <Label Grid.Column="2" Grid.Row="0" Content="Data urodzenia: " Margin="0 8"/>
                             <DatePicker x:Name="BirthdayDatePicker" Grid.Column="3" Grid.Row="0" Margin="0 0 20 0"/>
@@ -138,8 +145,8 @@
                             <Label Content="Następna Wizyta:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Label Content="Następne szczepienie:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Label Content="Ostatnia recepta:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBox x:Name="SelectedPatientFullNameTextBox" Text="{Binding ChosenPatient.FullName}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="True"/>
-                            <TextBox x:Name="SelectedPatientEmailTextBox" Text="{Binding ChosenPatient.EmailAdress}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="True"/>
+                            <TextBox x:Name="SelectedPatientFullNameTextBox" Text="{Binding ChosenPatient.FullName}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="True" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="SelectedPatientEmailTextBox" Text="{Binding ChosenPatient.EmailAdress}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="True" VerticalContentAlignment="Center"/>
                             <DatePicker x:Name="DateOfBirthDatePicker" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedDateChanged="DateOfBirthDatePicker_SelectedDateChanged"/>
                             <TextBlock x:Name="DateOfBirthTextBlock" Text="{Binding ChosenPatient.DateOfBirth}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Label x:Name="NextVisitDateTextBlock" Content="{Binding ChosenPatient.NextVisit}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -197,8 +204,8 @@
                                     <Label Content="Nazwa szczepienia:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <Label Content="Data wykonania:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <Label Content="Należy wykonać przed:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    <TextBox x:Name="StatusTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    <TextBox x:Name="VaccineNameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox x:Name="StatusTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+                                    <TextBox x:Name="VaccineNameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
                                     <Label x:Name="VaccinationDoneDateTextBlock" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                                     <DatePicker x:Name="VaccinationDoneDateDatePicker" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedDateChanged="VaccinationDoneDateDatePicker_SelectedDateChanged"/>
                                     <Label x:Name="VaccinationObligatoryByDateTextBlock" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"/>

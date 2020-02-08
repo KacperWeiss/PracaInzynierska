@@ -39,7 +39,8 @@ namespace PrzychodniaApp.UserControlers.Entries
         {
             using (var context = new DataBaseContext())
             {
-                var vaccination = context.Vaccinations.Single(x => x.Id == Convert.ToInt32(IdHolderHack.Text));
+                int localId = Convert.ToInt32(IdHolderHack.Text);
+                var vaccination = context.Vaccinations.Single(x => x.Id == localId);
                 vaccination.VaccineStatus = GetVaccineStatus(StatusComboBox.SelectedIndex);
                 context.SaveChanges();
             }

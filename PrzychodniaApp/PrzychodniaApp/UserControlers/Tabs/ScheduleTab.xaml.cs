@@ -123,10 +123,17 @@ namespace PrzychodniaApp.UserControlers.Tabs
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            AvailabilitiesList = AvailabilitiesForScheduleTab.GetRepresentation(dayOfWeek.Value)
-                .Where(x => x.MedicalWorkerId == MedicalWorkersList[MedicalWorkerSearchComboBox.SelectedIndex].Id)
-                .Where(x => x.SpecializationId == SpecializationsList[SpecializationSearchComboBox.SelectedIndex].SpecializationId)
-                .ToList();
+            try
+            {
+                AvailabilitiesList = AvailabilitiesForScheduleTab.GetRepresentation(dayOfWeek.Value)
+                    .Where(x => x.MedicalWorkerId == MedicalWorkersList[MedicalWorkerSearchComboBox.SelectedIndex].Id)
+                    .Where(x => x.SpecializationId == SpecializationsList[SpecializationSearchComboBox.SelectedIndex].SpecializationId)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)

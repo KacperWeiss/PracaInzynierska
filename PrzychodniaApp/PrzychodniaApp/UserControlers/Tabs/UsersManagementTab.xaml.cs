@@ -114,10 +114,10 @@ namespace PrzychodniaApp.UserControlers.Tabs
                             newUserAccess = UserAccess.Admin;
                             break;
                         case 1:
-                            newUserAccess = UserAccess.Reception;
+                            newUserAccess = UserAccess.Recepcjonista;
                             break;
                         case 2:
-                            newUserAccess = UserAccess.MedicalWorker;
+                            newUserAccess = UserAccess.PracownikMedyczny;
                             break;
                         default:
                             break;
@@ -212,10 +212,10 @@ namespace PrzychodniaApp.UserControlers.Tabs
                             newUserAccess = UserAccess.Admin;
                             break;
                         case 1:
-                            newUserAccess = UserAccess.Reception;
+                            newUserAccess = UserAccess.Recepcjonista;
                             break;
                         case 2:
-                            newUserAccess = UserAccess.MedicalWorker;
+                            newUserAccess = UserAccess.PracownikMedyczny;
                             break;
                         default:
                             break;
@@ -223,7 +223,7 @@ namespace PrzychodniaApp.UserControlers.Tabs
 
                     using (var context = new DataBaseContext())
                     {
-                        if (newUserAccess == UserAccess.MedicalWorker)
+                        if (newUserAccess == UserAccess.PracownikMedyczny)
                         {
                             if (FirstNameTextBox.Text == "" || LastNameTextBox.Text == "")
                             {

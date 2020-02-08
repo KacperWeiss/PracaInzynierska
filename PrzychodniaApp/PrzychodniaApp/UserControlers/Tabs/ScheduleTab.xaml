@@ -18,7 +18,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Gainsboro">
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Gainsboro" Visibility="Collapsed">
                         <Label Content="Data:" Width="50" Height="30" FontWeight="DemiBold" FontSize="16"/>
                         <DatePicker x:Name="VisitDatePicker" Width="20" SelectedDateChanged="VisitDatePicker_SelectedDateChanged"/>
                         <Label Content="Specjalizacja:" Width="110" Height="30" FontWeight="DemiBold" FontSize="16"/>

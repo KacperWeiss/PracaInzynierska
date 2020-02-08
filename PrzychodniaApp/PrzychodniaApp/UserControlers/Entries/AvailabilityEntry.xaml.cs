@@ -70,23 +70,28 @@ namespace PrzychodniaApp.UserControlers.Entries
                             dateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, TimeForNewVisit.Hour, TimeForNewVisit.Minute, 0);
                         }
                     }
+                    int localMedicalWorkerId = Convert.ToInt32(MedicalWorkerIdHolderHack.Text);
+                    var localMedicalWorker = context.MedicalWorkers.Single(x => x.Id == localMedicalWorkerId);
+                    int localSpecializationId = Convert.ToInt32(SpecializationIdHolderHack.Text);
+                    var localSpecialization = context.Specializations.Single(x => x.Id == localSpecializationId);
+
+                    if (context.Visits.Any(x => x.MedicalWorker.Id == localMedicalWorkerId && x.TimeStart == TimeForNewVisit))
+                    {
+                        throw new Exception("Nie mogą odbywać się 2 wizyty w tym samym czasie. Proszę wybrać inną godzinę.");
+                    }
 
                     DbVisit visit = new DbVisit()
                     {
-                        MedicalWorker = context.MedicalWorkers.Single(x => x.Id == Convert.ToInt32(MedicalWorkerIdHolderHack.Text)),
-                        Specialization = context.Specializations.Single(x => x.Id == Convert.ToInt32(SpecializationIdHolderHack.Text)),
+                        MedicalWorker = localMedicalWorker,
+                        Specialization = localSpecialization,
                         OptionalDescription = "",
                         Patient = context.Patients.Single(x => x.Id == DataHolderForMainWindow.PatientId),
                         TimeStart = TimeForNewVisit
                     };
-                    if (context.Visits.Any(x => x.MedicalWorker == visit.MedicalWorker && x.TimeStart == visit.TimeStart))
-                    {
-                        throw new Exception("Nie mogą odbywać się 2 wizyty w tym samym czasie. Proszę wybrać inną godzinę.");
-                    }
                     context.Visits.AddOrUpdate(x => x.Id, visit);
                     context.SaveChanges();
 
-                    context.MedicalWorkers.Single(x => x.Id == Convert.ToInt32(MedicalWorkerIdHolderHack.Text)).Visits.Add(visit);
+                    context.MedicalWorkers.Single(x => x.Id == localMedicalWorkerId).Visits.Add(visit);
                     context.Patients.Single(x => x.Id == DataHolderForMainWindow.PatientId).Visits.Add(visit);
                     context.SaveChanges();
 

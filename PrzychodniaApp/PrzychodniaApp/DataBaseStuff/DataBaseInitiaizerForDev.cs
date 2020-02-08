@@ -49,20 +49,20 @@ namespace PrzychodniaApp.DataBaseStuff
                     {
                         Login = "Recepcja",
                         Password = "Recepcja",
-                        UserAccess = UserAccess.Reception
+                        UserAccess = UserAccess.Recepcjonista
                     },
                     new DbUser()
                     {
                         Login = "AdamKozak",
                         Password = "PM123",
-                        UserAccess = UserAccess.MedicalWorker,
+                        UserAccess = UserAccess.PracownikMedyczny,
                         MedicalWorker = MedicalWorkers[0]
                     },
                     new DbUser()
                     {
                         Login = "BartekBut",
                         Password = "PM123",
-                        UserAccess = UserAccess.MedicalWorker,
+                        UserAccess = UserAccess.PracownikMedyczny,
                         MedicalWorker = MedicalWorkers[1]
                     }
 
@@ -74,31 +74,31 @@ namespace PrzychodniaApp.DataBaseStuff
                 {
                     new DbSpecialization()
                     {
-                        Type = "Family Physician",
+                        Type = "Lekarz rodzinny",
                         Availabilities = new List<DbAvailability>(),
                         MedicalWorkers = new List<DbMedicalWorker>()
                     },
                     new DbSpecialization()
                     {
-                        Type = "Internal Medicine Physician",
+                        Type = "Internista",
                         Availabilities = new List<DbAvailability>(),
                         MedicalWorkers = new List<DbMedicalWorker>()
                     },
                     new DbSpecialization()
                     {
-                        Type = "Pediatrician",
+                        Type = "Pediatra",
                         Availabilities = new List<DbAvailability>(),
                         MedicalWorkers = new List<DbMedicalWorker>()
                     },
                     new DbSpecialization()
                     {
-                        Type = "Psychiatrist",
+                        Type = "Psycholog",
                         Availabilities = new List<DbAvailability>(),
                         MedicalWorkers = new List<DbMedicalWorker>()
                     },
                     new DbSpecialization()
                     {
-                        Type = "Cardiologist",
+                        Type = "Kardiolog",
                         Availabilities = new List<DbAvailability>(),
                         MedicalWorkers = new List<DbMedicalWorker>()
                     }
@@ -122,7 +122,7 @@ namespace PrzychodniaApp.DataBaseStuff
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
                         MedicalWorker = MedicalWorkers[0],
-                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
+                        Specialization = Specializations.Single(x => x.Type == "Lekarz rodzinny")
                     },
                     new DbAvailability()
                     {
@@ -132,7 +132,7 @@ namespace PrzychodniaApp.DataBaseStuff
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
                         MedicalWorker = MedicalWorkers[0],
-                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
+                        Specialization = Specializations.Single(x => x.Type == "Lekarz rodzinny")
                     },
                     new DbAvailability()
                     {
@@ -142,7 +142,7 @@ namespace PrzychodniaApp.DataBaseStuff
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
                         MedicalWorker = MedicalWorkers[0],
-                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
+                        Specialization = Specializations.Single(x => x.Type == "Lekarz rodzinny")
                     },
                     new DbAvailability()
                     {
@@ -152,7 +152,7 @@ namespace PrzychodniaApp.DataBaseStuff
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
                         MedicalWorker = MedicalWorkers[1],
-                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
+                        Specialization = Specializations.Single(x => x.Type == "Lekarz rodzinny")
                     },
                     new DbAvailability()
                     {
@@ -162,7 +162,7 @@ namespace PrzychodniaApp.DataBaseStuff
                         MaxAmountOfVisits = 30,
                         VisitPrice = 0,
                         MedicalWorker = MedicalWorkers[1],
-                        Specialization = Specializations.Single(x => x.Type == "Family Physician")
+                        Specialization = Specializations.Single(x => x.Type == "Lekarz rodzinny")
                     },
                     new DbAvailability()
                     {
@@ -172,7 +172,7 @@ namespace PrzychodniaApp.DataBaseStuff
                         MaxAmountOfVisits = 14,
                         VisitPrice = 25,
                         MedicalWorker = MedicalWorkers[0],
-                        Specialization = Specializations.Single(x => x.Type == "Psychiatrist")
+                        Specialization = Specializations.Single(x => x.Type == "Psycholog")
                     },
                     new DbAvailability()
                     {
@@ -182,7 +182,7 @@ namespace PrzychodniaApp.DataBaseStuff
                         MaxAmountOfVisits = 14,
                         VisitPrice = 50,
                         MedicalWorker = MedicalWorkers[1],
-                        Specialization = Specializations.Single(x => x.Type == "Cardiologist")
+                        Specialization = Specializations.Single(x => x.Type == "Kardiolog")
                     }
                 };
                 Availabilities.ForEach(a => context.Availabilities.AddOrUpdate(x => x.Id, a));
@@ -225,6 +225,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         FirstName = "Adrian",
                         LastName = "Kowalski",
                         EmailAdress = "Adrian@testmail.com",
+                        City = "Wrocław",
+                        StreetAdress = "Budziszyńska 123/15",
                         NumberPesel = 010022168754,
                         DateOfBirth = new DateTime(2010, 2, 21),
                         TreatmentHistory = TreatmentHistories[0],
@@ -237,6 +239,8 @@ namespace PrzychodniaApp.DataBaseStuff
                         FirstName = "Beata",
                         LastName = "Nowacka",
                         EmailAdress = "Beata@testmail.com",
+                        City = "Wrocław",
+                        StreetAdress = "Zemska 10/15",
                         NumberPesel = 008111168754,
                         DateOfBirth = new DateTime(2008, 11, 11),
                         TreatmentHistory = TreatmentHistories[1],
@@ -303,15 +307,15 @@ namespace PrzychodniaApp.DataBaseStuff
                 {
                     new DbTreatment()
                     {
-                        IllnessName = "Cold",
-                        SymptomsDescription = "Patient have symptoms of cold",
+                        IllnessName = "Przeziębienie",
+                        SymptomsDescription = "Pacjent ma symptomy przeziębienia",
                         Prescription = new List<DbPrescribedMedications>(),
                         Visit = PastVisits[0]
                     },
                     new DbTreatment()
                     {
-                        IllnessName = "Cold",
-                        SymptomsDescription = "Patient have symptoms of cold",
+                        IllnessName = "Przeziębienie",
+                        SymptomsDescription = "Pacjent ma symptomy przeziębienia",
                         Prescription = new List<DbPrescribedMedications>(),
                         Visit = PastVisits[1]
                     }
@@ -327,13 +331,13 @@ namespace PrzychodniaApp.DataBaseStuff
                 {
                     new DbPrescribedMedications()
                     {
-                        Dosage = "3x10ml a day",
-                        MedicinesName = "Antitussive syrup"
+                        Dosage = "3x10ml na dzień",
+                        MedicinesName = "Syrop przeciwkaszlowy"
                     },
                     new DbPrescribedMedications()
                     {
-                        Dosage = "3x10ml a day",
-                        MedicinesName = "Antitussive syrup"
+                        Dosage = "3x10ml na dzień",
+                        MedicinesName = "Syrop przeciwkaszlowy"
                     }
                 };
                 PrescribedMedications.ForEach(pm => context.PrescribedMedications.AddOrUpdate(x => x.Id, pm));
@@ -349,36 +353,36 @@ namespace PrzychodniaApp.DataBaseStuff
                 {
                     new DbVaccination()
                     {
-                        VaccinesName = "Flu",
+                        VaccinesName = "Grypa",
                         VaccineStatus = VaccineStatus.ObligatoryByDate,
                         ObligatoryBy = new DateTime(2020, 10, 10)
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Meassels",
+                        VaccinesName = "Różyczka",
                         VaccineStatus = VaccineStatus.Optional
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Sore Throat",
+                        VaccinesName = "Tężec",
                         VaccineStatus = VaccineStatus.ObligatoryAlreadyVaccined,
                         ObligatoryBy = new DateTime(2020, 1 , 10),
                         VaccinationDate = new DateTime(2020, 1, 05)
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Flu",
+                        VaccinesName = "Grypa",
                         VaccineStatus = VaccineStatus.ObligatoryByDate,
                         ObligatoryBy = new DateTime(2020, 10, 10)
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Meassels",
+                        VaccinesName = "Różyczka",
                         VaccineStatus = VaccineStatus.Optional
                     },
                     new DbVaccination()
                     {
-                        VaccinesName = "Sore Throat",
+                        VaccinesName = "Tężec",
                         VaccineStatus = VaccineStatus.ObligatoryAlreadyVaccined,
                         ObligatoryBy = new DateTime(2020, 1 , 10),
                         VaccinationDate = new DateTime(2020, 1, 05)

@@ -57,11 +57,11 @@ namespace PrzychodniaApp
                     AdministratorListViewMenu.Visibility = Visibility.Visible;
                     AdministratorListViewMenu.SelectedValue = 0;
                     break;
-                case UserAccess.Reception:
+                case UserAccess.Recepcjonista:
                     ReceptionListViewMenu.Visibility = Visibility.Visible;
                     ReceptionListViewMenu.SelectedValue = 0;
                     break;
-                case UserAccess.MedicalWorker:
+                case UserAccess.PracownikMedyczny:
                     MedicalWorkerListViewMenu.Visibility = Visibility.Visible;
                     MedicalWorkerListViewMenu.SelectedValue = 0;
                     break;

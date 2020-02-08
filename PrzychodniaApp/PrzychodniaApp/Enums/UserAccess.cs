@@ -9,7 +9,7 @@ namespace PrzychodniaApp.Enums
     public enum UserAccess
     {
         Admin = 0,
-        Reception,
-        MedicalWorker
+        Recepcjonista,
+        PracownikMedyczny
     }
 }

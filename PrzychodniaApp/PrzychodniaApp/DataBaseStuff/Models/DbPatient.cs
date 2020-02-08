@@ -45,6 +45,10 @@ namespace PrzychodniaApp.DataBaseStuff.Models
 
         public string EmailAdress { get; set; }
 
+        public string City { get; set; }
+
+        public string StreetAdress { get; set; }
+
 
         /// <summary>
         /// Date of birth of the patient
