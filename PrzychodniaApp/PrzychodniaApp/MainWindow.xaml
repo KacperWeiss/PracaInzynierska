@@ -60,12 +60,12 @@
                             <TextBlock Text="Zarządzaj kontami" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <!--<ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
                             <TextBlock Text="Dodaj usługi" VerticalAlignment="Center" FontSize="20" Margin="15 0"/>
                         </StackPanel>
-                    </ListViewItem>
+                    </ListViewItem>-->
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Power" Width="30" Height="30"/>

@@ -150,7 +150,7 @@ namespace PrzychodniaApp
                 //    ContentGrid.Children.Clear();
                 //    ContentGrid.Children.Add(addServicesTab);
                 //    break;
-                case 2:
+                case 1:
                     ContentGrid.Children.Clear();
                     ShowLoginForm();
                     break;
