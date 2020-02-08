@@ -7,10 +7,32 @@
              xmlns:local="clr-namespace:PrzychodniaApp.UserControlers"
              mc:Ignorable="d" 
              TextElement.FontSize="16"
-             d:DesignHeight="450" d:DesignWidth="350">
-    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" VerticalAlignment="Stretch" Padding="10" Height="450" Width="350">
+             d:DesignHeight="600" d:DesignWidth="350">
+    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" VerticalAlignment="Stretch" Padding="10" Height="600" Width="350">
         <Grid>
             <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Serwer: " Margin="0 8"/>
+                    <ComboBox x:Name="ServerComboBox" Grid.Column="1" Grid.Row="0" Loaded="ServerComboBox_Loaded" SelectionChanged="ServerComboBox_SelectionChanged"/>
+                    <Label x:Name="CustomServerLabel" Grid.Column="0" Grid.Row="1" Content="Wpisz nazwę: " Margin="0 8" Visibility="Collapsed"/>
+                    <TextBox x:Name="CustomServerTextBox" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Bottom" Visibility="Collapsed"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="CheckConnectionButton" Content="Sprawdz łącze" Margin="0 10" Grid.Column="0" Width="130" Click="CheckConnectionButton_Click"/>
+                    <Button x:Name="SaveConnectionButton" Content="Zapisz" Margin="0 10" Grid.Column="1" Width="130" Click="SaveConnectionButton_Click"/>
+                </Grid>
                 <materialDesign:PackIcon Kind="Account" Height="200" Width="150" Margin="0 10 0 10" HorizontalAlignment="Center"/>
                 <Grid Margin="0 10">
                     <Grid.ColumnDefinitions>

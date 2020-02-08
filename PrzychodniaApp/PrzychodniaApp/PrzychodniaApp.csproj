@@ -28,7 +28,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -119,6 +119,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -145,9 +146,11 @@
     <Compile Include="DataBaseStuff\Models\DbUser.cs" />
     <Compile Include="Enums\CustomEnumToString.cs" />
     <Compile Include="Enums\UserAccess.cs" />
+    <Compile Include="Logics\AppSettings.cs" />
     <Compile Include="Logics\PasswordGenerator.cs" />
     <Compile Include="Logics\LoginManagement.cs" />
     <Compile Include="Logics\PDFCreator.cs" />
+    <Compile Include="Logics\SqlConnectionHelper.cs" />
     <Compile Include="UserControlers\DataRepresantations\AvailabilitiesForScheduleTab.cs" />
     <Compile Include="UserControlers\DataRepresantations\DataHolderForMainWindow.cs" />
     <Compile Include="UserControlers\DataRepresantations\LongPatientForPatientsTab.cs" />

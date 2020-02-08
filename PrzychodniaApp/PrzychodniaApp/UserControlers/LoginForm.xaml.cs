@@ -56,6 +56,7 @@ namespace PrzychodniaApp.UserControlers
                         try
                         {
                             DataHolderForMainWindow.User = LoginManagement.LoginAs(LoginTextBox.Text, PasswordBox.Password);
+                            DataHolderForMainWindow.IsUserLogedIn = true;
 
                             parentWindow.LogInType(DataHolderForMainWindow.User.UserAccess);
                         }

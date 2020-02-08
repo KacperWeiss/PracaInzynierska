@@ -26,8 +26,9 @@ namespace PrzychodniaApp
     {
         bool menuExtended = true;
         int menuPointerOffset = 112;
-        LoginForm loginForm = new LoginForm();
+        public LoginForm loginForm = new LoginForm();
         SettingsForm settingsForm = new SettingsForm();
+        bool areSettingsOpen = false;
 
         public MainWindow()
         {
@@ -151,6 +152,7 @@ namespace PrzychodniaApp
                 //    ContentGrid.Children.Add(addServicesTab);
                 //    break;
                 case 1:
+                    DataHolderForMainWindow.IsUserLogedIn = false;
                     ContentGrid.Children.Clear();
                     ShowLoginForm();
                     break;
@@ -194,6 +196,7 @@ namespace PrzychodniaApp
                     ContentGrid.Children.Add(scheduleTab);
                     break;
                 case 3:
+                    DataHolderForMainWindow.IsUserLogedIn = false;
                     ContentGrid.Children.Clear();
                     ShowLoginForm();
                     break;
@@ -239,6 +242,7 @@ namespace PrzychodniaApp
                         ContentGrid.Children.Add(currentVisitTab);
                         break;
                     case 2:
+                        DataHolderForMainWindow.IsUserLogedIn = false;
                         ContentGrid.Children.Clear();
                         ShowLoginForm();
                         break;
@@ -255,10 +259,19 @@ namespace PrzychodniaApp
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            MenuGrid.Visibility = Visibility.Collapsed;
-            ContentGrid.Visibility = Visibility.Collapsed;
-            MiddleScreenPopupGrid.Children.Clear();
-            MiddleScreenPopupGrid.Children.Add(settingsForm);
+            if (!areSettingsOpen)
+            {
+                areSettingsOpen = !areSettingsOpen;
+                MenuGrid.Visibility = Visibility.Collapsed;
+                ContentGrid.Visibility = Visibility.Collapsed;
+                MiddleScreenPopupGrid.Children.Clear();
+                MiddleScreenPopupGrid.Children.Add(settingsForm);
+            }
+            else
+            {
+                areSettingsOpen = !areSettingsOpen;
+                settingsForm.CloseSettings();
+            }
         }
     }
 }
